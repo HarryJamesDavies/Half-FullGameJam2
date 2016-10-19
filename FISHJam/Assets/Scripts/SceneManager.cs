@@ -3,6 +3,11 @@ using System.Collections;
 
 public class SceneManager : MonoBehaviour {
 
+    public void MainMenuClick()
+    {
+        Application.LoadLevel(0);
+    }
+
 	public void PlayClick()
     {
         Application.LoadLevel(1);
