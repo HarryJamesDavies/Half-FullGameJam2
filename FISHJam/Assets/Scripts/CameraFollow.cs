@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour {
             transform.position = new Vector3(transform.position.x + m_movementFactor, transform.position.y, transform.position.z);            
 		}
 
-        if (Input.mousePosition.x < Screen.width)
+        if (Input.mousePosition.x < Screen.width - 10.0f)
         {
             transform.position = new Vector3(transform.position.x - m_movementFactor, transform.position.y, transform.position.z);
         }
