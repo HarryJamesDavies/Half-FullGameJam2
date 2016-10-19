@@ -27,4 +27,37 @@ public class SceneManager : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    void Update()
+    {
+        switch (Application.loadedLevel)
+        {
+            case 0:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Application.Quit();
+                }
+                break;
+            case 1:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Application.Quit();
+                }
+                break;
+            case 2:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Application.Quit();
+                }
+                break;
+            case 3:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Application.Quit();
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
