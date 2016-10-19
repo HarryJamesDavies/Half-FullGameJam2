@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         string pos = m_target.x + ", " + m_target. y + ", " + m_target.z;
         string mouse =Input.mousePosition.x + ", " + Input.mousePosition.y + ", " + Input.mousePosition.z;
         //Debug.Log(pos);
-        Debug.Log(mouse);
+        //Debug.Log(mouse);
     }
 }
 
