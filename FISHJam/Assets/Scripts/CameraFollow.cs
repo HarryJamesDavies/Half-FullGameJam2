@@ -21,6 +21,21 @@ public class CameraFollow : MonoBehaviour {
             transform.position = new Vector3(transform.position.x + m_movementFactor, transform.position.y, transform.position.z);            
 		}
 
+        if (Input.mousePosition.x < Screen.width)
+        {
+            transform.position = new Vector3(transform.position.x - m_movementFactor, transform.position.y, transform.position.z);
+        }
+
+        if (Input.mousePosition.y > 0.0f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + m_movementFactor);
+        }
+
+        if (Input.mousePosition.y < Screen.height)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - m_movementFactor);
+        }
+
         //to zoom the camera out
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -31,10 +46,6 @@ public class CameraFollow : MonoBehaviour {
                 //then lock its position
                 transform.position = new Vector3(transform.position.x, m_zoomOutFactor, transform.position.z);
             }
-        }
-        if (Input.mousePosition.x < Screen.width)
-        {
-			transform.position = new Vector3 (transform.position.x - m_movementFactor, transform.position.y, transform.position.z);
         }
 
         //to zoom the camera in
@@ -48,13 +59,5 @@ public class CameraFollow : MonoBehaviour {
                 transform.position = new Vector3(transform.position.x, m_zoomInFactor, transform.position.z);
             }
         }
-        if (Input.mousePosition.y > 0.0f)
-        {
-			transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z + m_movementFactor);
-		}
-		if (Input.mousePosition.y < Screen.height)
-        {
-			transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z - m_movementFactor);
-		}
 	}
 }
