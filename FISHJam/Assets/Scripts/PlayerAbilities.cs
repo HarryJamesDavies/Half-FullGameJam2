@@ -78,7 +78,7 @@ public class PlayerAbilities : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                m_currentInteractable.GetComponent<InteractableState>().SetState(m_state);
+                m_currentInteractable.GetComponent<InteractableBase>().SetState(m_state);
             }
         }
 	}
