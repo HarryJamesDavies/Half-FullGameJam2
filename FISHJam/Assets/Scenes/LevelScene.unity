@@ -281,8 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8942f162f6c9742a2f571da7c841ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_workerList: []
-  WorkerManagerprefab: {fileID: 111466, guid: b3f2f7fa6b6dcae46b1cb0ae26e874a2, type: 2}
+  m_WorkerList: []
+  m_Worker: {fileID: 111466, guid: b3f2f7fa6b6dcae46b1cb0ae26e874a2, type: 2}
   spawnPoint: {fileID: 768419291}
 --- !u!4 &788923107
 Transform:
