@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 
@@ -17,6 +18,11 @@ public class PlayerAbilities : MonoBehaviour
     public GameObject m_currentInteractable = null;
     public InteractableStates m_state = InteractableStates.NORMAL;
 
+    public Text m_abilityText;
+    public Text m_objectState;
+    public string m_currentAbility;
+    public string m_stateOfObject;
+
     // Use this for initialization
     void Awake ()
     {
@@ -28,6 +34,11 @@ public class PlayerAbilities : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        m_currentAbility = "NORMAL";
+        m_stateOfObject = "NORMAL";
+        m_abilityText.text = m_currentAbility;
+        m_objectState.text = m_stateOfObject;
 	}
 	
 	// Update is called once per frame
@@ -46,10 +57,12 @@ public class PlayerAbilities : MonoBehaviour
                         if (m_state != InteractableStates.TOGGLE)
                         {
                             m_state = InteractableStates.TOGGLE;
+                            m_currentAbility = "TOGGLE";
                         }
                         else
                         {
                             m_state = InteractableStates.NORMAL;
+                            m_currentAbility = "NORMAL";
                         }
                     }
 
@@ -59,10 +72,12 @@ public class PlayerAbilities : MonoBehaviour
                         if (m_state != InteractableStates.MODIFY)
                         {
                             m_state = InteractableStates.MODIFY;
+                            m_currentAbility = "MODIFY";
                         }
                         else
                         {
                             m_state = InteractableStates.NORMAL;
+                            m_currentAbility = "NORMAL";
                         }
                     }
 
@@ -72,10 +87,12 @@ public class PlayerAbilities : MonoBehaviour
                         if (m_state != InteractableStates.SWAP)
                         {
                             m_state = InteractableStates.SWAP;
+                            m_currentAbility = "SWAP";
                         }
                         else
                         {
                             m_state = InteractableStates.NORMAL;
+                            m_currentAbility = "NORMAL";
                         }
                     }
 
@@ -83,6 +100,7 @@ public class PlayerAbilities : MonoBehaviour
                     if (Input.GetButtonDown("Y"))
                     {
                         m_state = InteractableStates.NORMAL;
+                        m_currentAbility = "NORMAL";
                     }
 
                     //Press Right trigger to activate ability over an interactable object
@@ -105,10 +123,12 @@ public class PlayerAbilities : MonoBehaviour
                         if (m_state != InteractableStates.TOGGLE)
                         {
                             m_state = InteractableStates.TOGGLE;
+                            m_currentAbility = "TOGGLE";
                         }
                         else
                         {
                             m_state = InteractableStates.NORMAL;
+                            m_currentAbility = "NORMAL";
                         }
                     }
 
@@ -118,10 +138,12 @@ public class PlayerAbilities : MonoBehaviour
                         if (m_state != InteractableStates.MODIFY)
                         {
                             m_state = InteractableStates.MODIFY;
+                            m_currentAbility = "MODIFY";
                         }
                         else
                         {
                             m_state = InteractableStates.NORMAL;
+                            m_currentAbility = "NORMAL";
                         }
                     }
 
@@ -131,10 +153,12 @@ public class PlayerAbilities : MonoBehaviour
                         if (m_state != InteractableStates.SWAP)
                         {
                             m_state = InteractableStates.SWAP;
+                            m_currentAbility = "SWAP";
                         }
                         else
                         {
                             m_state = InteractableStates.NORMAL;
+                            m_currentAbility = "NORMAL";
                         }
                     }
 
@@ -142,6 +166,7 @@ public class PlayerAbilities : MonoBehaviour
                     if (Input.GetButtonDown("Triangle"))
                     {
                         m_state = InteractableStates.NORMAL;
+                        m_currentAbility = "NORMAL";
                     }
 
                     //Press R2 to activate ability over an interactable object
@@ -165,10 +190,12 @@ public class PlayerAbilities : MonoBehaviour
                 if (m_state != InteractableStates.TOGGLE)
                 {
                     m_state = InteractableStates.TOGGLE;
+                    m_currentAbility = "TOGGLE";
                 }
                 else
                 {
                     m_state = InteractableStates.NORMAL;
+                    m_currentAbility = "NORMAL";
                 }
             }
 
@@ -177,10 +204,12 @@ public class PlayerAbilities : MonoBehaviour
                 if (m_state != InteractableStates.MODIFY)
                 {
                     m_state = InteractableStates.MODIFY;
+                    m_currentAbility = "MODIFY";
                 }
                 else
                 {
                     m_state = InteractableStates.NORMAL;
+                    m_currentAbility = "NORMAL";
                 }
             }
 
@@ -189,16 +218,19 @@ public class PlayerAbilities : MonoBehaviour
                 if (m_state != InteractableStates.SWAP)
                 {
                     m_state = InteractableStates.SWAP;
+                    m_currentAbility = "SWAP";
                 }
                 else
                 {
                     m_state = InteractableStates.NORMAL;
+                    m_currentAbility = "NORMAL";
                 }
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 m_state = InteractableStates.NORMAL;
+                m_currentAbility = "NORMAL";
             }
 
             if (m_currentInteractable != null)
@@ -209,6 +241,8 @@ public class PlayerAbilities : MonoBehaviour
                 }
             }
         }
+
+        m_abilityText.text = m_currentAbility;
 	}
 
     void OnTriggerEnter(Collider _collider)
