@@ -250,6 +250,7 @@ public class PlayerAbilities : MonoBehaviour
         if (_collider.gameObject.tag == "Interactable")
         {
             m_currentInteractable = _collider.gameObject;
+            //m_stateOfObject = m_currentInteractable.GetComponent<InteractableBase>().GetState().ToString();
         }
     }
 
