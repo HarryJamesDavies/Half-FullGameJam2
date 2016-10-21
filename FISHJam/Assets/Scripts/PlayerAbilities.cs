@@ -38,6 +38,9 @@ public class PlayerAbilities : MonoBehaviour
             switch (GameManager.m_gameManager.m_controllerType)
             {
                 case "Xbox":
+                    //Xbox controller ability changes
+
+                    //Press A to change Toggle ability
                     if (Input.GetButtonDown("A"))
                     {
                         if (m_state != InteractableStates.TOGGLE)
@@ -50,6 +53,7 @@ public class PlayerAbilities : MonoBehaviour
                         }
                     }
 
+                    //Press B to change Modify ability
                     if (Input.GetButtonDown("B"))
                     {
                         if (m_state != InteractableStates.MODIFY)
@@ -62,6 +66,7 @@ public class PlayerAbilities : MonoBehaviour
                         }
                     }
 
+                    //Press X to change Swap ability
                     if (Input.GetButtonDown("X(Xbox)"))
                     {
                         if (m_state != InteractableStates.SWAP)
@@ -74,11 +79,13 @@ public class PlayerAbilities : MonoBehaviour
                         }
                     }
 
+                    //Press Y to change ability to normal
                     if (Input.GetButtonDown("Y"))
                     {
                         m_state = InteractableStates.NORMAL;
                     }
 
+                    //Press Right trigger to activate ability over an interactable object
                     if (m_currentInteractable != null)
                     {
                         if (Input.GetAxis("Triggers") < 0.0f)
@@ -90,6 +97,9 @@ public class PlayerAbilities : MonoBehaviour
 
                     break;
                 case "PS4":
+                    //PS4 controller ability changes
+
+                    //Press X to change Toggle ability
                     if (Input.GetButtonDown("X(PS4)"))
                     {
                         if (m_state != InteractableStates.TOGGLE)
@@ -102,6 +112,7 @@ public class PlayerAbilities : MonoBehaviour
                         }
                     }
 
+                    //Press Circle to change Modify ability
                     if (Input.GetButtonDown("Circle"))
                     {
                         if (m_state != InteractableStates.MODIFY)
@@ -114,6 +125,7 @@ public class PlayerAbilities : MonoBehaviour
                         }
                     }
 
+                    //Press Square to change Swap ability
                     if (Input.GetButtonDown("Square"))
                     {
                         if (m_state != InteractableStates.SWAP)
@@ -126,11 +138,13 @@ public class PlayerAbilities : MonoBehaviour
                         }
                     }
 
+                    //Press Triangle to change ability to normal
                     if (Input.GetButtonDown("Triangle"))
                     {
                         m_state = InteractableStates.NORMAL;
                     }
 
+                    //Press R2 to activate ability over an interactable object
                     if (m_currentInteractable != null)
                     {
                         if (Input.GetAxis("R2") > -1.0f)
