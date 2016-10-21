@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WaterCoolerBehaviour : MonoBehaviour {
-
+public class WaterCoolerBehaviour : MonoBehaviour
+{
     private PlayerAbilities.InteractableStates m_state;
-    //private Animator m_animator;
+    private Animator m_animator;
     private bool m_toggle = false;
 
     void Awake()
     {
-        //m_animator = GetComponent<Animator>();
+        m_animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -44,26 +44,36 @@ public class WaterCoolerBehaviour : MonoBehaviour {
 
     void NormalBehaviour()
     {
-
+        m_animator.SetBool("Active", true);
+        m_animator.SetBool("Swap", false);
     }
 
     void ToggleBehaviour()
     {
-        if (m_toggle)
-        {
+        m_animator.SetBool("Swap", false);
 
-            m_toggle = false;
+        if (m_animator.GetBool("Active"))
+        {
+            m_animator.SetBool("Active", false);
         }
         else
         {
-
-            m_toggle = true;
+            m_animator.SetBool("Active", true);
         }
     }
 
     void SwapBehaviour()
     {
+        m_animator.SetBool("Active", true);
 
+        if (m_animator.GetBool("Swap"))
+        {
+            m_animator.SetBool("Swap", false);
+        }
+        else
+        {
+            m_animator.SetBool("Swap", true);
+        }
     }
 
     void ModifyBehaviour()
