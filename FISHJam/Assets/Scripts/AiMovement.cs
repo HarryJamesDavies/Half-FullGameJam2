@@ -20,34 +20,39 @@ public class AiMovement : MonoBehaviour {
         arrivedAtDesire
     }
     public GameObject m_goal;
+    private GameObject _goal;
     public NavMeshAgent m_agent;
     public WorkerScript m_desires;
-    public int desire;
-    public int state;
+    public string m_desire;
+    public int m_state;
 
     void Start()
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_desires = gameObject.GetComponent<WorkerScript>();
-        state = (int)aiState.needsDesire;
+        m_state = (int)aiState.needsDesire;
     }
 
+    //main state machine for the AI is done in the update
     void Update()
     {
-        if(state == (int)aiState.needsDesire)
+        if(m_state == (int)aiState.needsDesire)
         {
-            simulateDesire();
+            //simulateDesire();
+            getDesire();
+            m_state = (int)aiState.needsToMove;
         }
-        else if(state == (int)aiState.needsToMove)
+        else if(m_state == (int)aiState.needsToMove)
         {
-            setGoal(null);
+            setGoal();
+            //m_state = (int)aiState.goingToDesire;
             moveTowardsGoal();
         }
-        else if (state == (int)aiState.goingToDesire)
+        else if (m_state == (int)aiState.goingToDesire)
         {
             //check to see if arrived yet
         }
-        else if (state == (int)aiState.arrivedAtDesire)
+        else if (m_state == (int)aiState.arrivedAtDesire)
         {
             //has arrived so change the worker's desires slightly over time
             //once full, set state to needs desire
@@ -55,17 +60,55 @@ public class AiMovement : MonoBehaviour {
         
     }
 
-    //this functions sets the goal to whatever you want it to be
-    public void setGoal(GameObject _goal)
+    void OnTriggerEnter(Collider _collider)
     {
+        if(_collider == m_goal.GetComponent<Collider>())
+        {
+            m_state = (int)aiState.arrivedAtDesire;
+        }
+        else
+        {
+
+        }
+    }
+
+    //this functions sets the goal to whatever you want it to be by raycasting out to find a collider
+    public void setGoal()
+    {
+        RaycastHit[] colliders = Physics.SphereCastAll(gameObject.transform.position, 10.0f, Vector3.zero);
+        
+        
+        for (int iter = 0; colliders.Length > iter; iter++)
+        {
+            if(m_desire == "thirsty" && colliders[iter].collider.tag == "WaterCooler")
+            {
+                _goal = colliders[iter].collider.gameObject;
+            }
+            else if(m_desire == "hungry" && colliders[iter].collider.tag == "CaffeteriaTable")
+            {
+                _goal = colliders[iter].collider.gameObject;
+            }
+            else if (m_desire == "print" && colliders[iter].collider.tag == "Printer")
+            {
+                _goal = colliders[iter].collider.gameObject;
+            }
+            else if (m_desire == "toilet" && colliders[iter].collider.tag == "toilet")
+            {
+                _goal = colliders[iter].collider.gameObject;
+            }
+            else
+            {
+                _goal = null;
+            }
+        }
         m_goal = _goal;
     }
 
     //this function starts the worker moving towards the goal
     void moveTowardsGoal()
     {
-        m_agent.destination = m_goal.transform.position;
-        state = (int)aiState.goingToDesire;
+        m_agent.destination = m_goal.transform.Find("NPCPosition").transform.position;
+        m_state = (int)aiState.goingToDesire;
     }
 
     //this function simply checks to see if it can put the agent back onto the navmesh if it falls off
@@ -92,10 +135,9 @@ public class AiMovement : MonoBehaviour {
         }
     }
 
-    void simulateDesire()
+    void getDesire()
     {
-        desire = Random.Range(0, 4);
-        state = (int)aiState.needsToMove;
+        m_desire = m_desires.m_currentDesire;
     }
 
     
