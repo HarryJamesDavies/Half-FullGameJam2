@@ -11,7 +11,7 @@ public class WorkerScript : MonoBehaviour {
     private string m_hungry;
     private string m_print;
     private string m_toilet;
-    string m_currentDesire;
+    public string m_currentDesire;
 
     //a random list position
     private static int m_randomListPosition;
