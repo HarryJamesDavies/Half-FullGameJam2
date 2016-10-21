@@ -19,6 +19,41 @@ public class InteractableBase : MonoBehaviour
     {
         return m_state;
     }
+
+    public String GetStateString()
+    {
+        string _string;
+        switch (m_state)
+        {
+            case PlayerAbilities.InteractableStates.NORMAL:
+            {
+                    _string = "NORMAL";
+                break;
+            }
+            case PlayerAbilities.InteractableStates.TOGGLE:
+                {
+                    _string = "TOGGLE";
+                    break;
+                }
+            case PlayerAbilities.InteractableStates.MODIFY:
+                {
+                    _string = "MODIFY";
+                    break;
+                }
+            case PlayerAbilities.InteractableStates.SWAP:
+                {
+                    _string = "SWAP";
+                    break;
+                }
+            default:
+                {
+                    _string = "NORMAL";
+                    break;
+                }
+        }
+
+        return _string;
+    }
 }
 
 //=============================================================//
