@@ -37,6 +37,7 @@ public class SceneManager : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Application.Quit();
+                    break;
                 }
 
                 //controller main menu inputs
@@ -44,22 +45,28 @@ public class SceneManager : MonoBehaviour {
                 {
                     if (Input.GetButtonDown("X(PS4)") || (Input.GetButtonDown("A")))
                     {
+                        Debug.Log("X/A pressed.");
                         Application.LoadLevel(1);
+                        break;
                     }
 
                     if (Input.GetButtonDown("Triangle") || (Input.GetButtonDown("Y")))
                     {
                         Application.LoadLevel(2);
+                        break;
                     }
 
                     if (Input.GetButtonDown("Square") || (Input.GetButtonDown("X(Xbox)")))
                     {
+                        Debug.Log("Square/X pressed.");
                         Application.LoadLevel(3);
+                        break;
                     }
 
                     if (Input.GetButtonDown("TouchPad") || (Input.GetButtonDown("Start")))
                     {
                         Application.Quit();
+                        break;
                     }
                 }
                 break;
@@ -67,6 +74,7 @@ public class SceneManager : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Application.Quit();
+                    break;
                 }
 
                 if (GameManager.m_gameManager.m_useController)
@@ -74,6 +82,7 @@ public class SceneManager : MonoBehaviour {
                     if (Input.GetButtonDown("TouchPad") || (Input.GetButtonDown("Start")))
                     {
                         Application.LoadLevel(0);
+                        break;
                     }
                 }
                 break;
@@ -81,6 +90,7 @@ public class SceneManager : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Application.Quit();
+                    break;
                 }
 
                 if (GameManager.m_gameManager.m_useController)
@@ -88,16 +98,19 @@ public class SceneManager : MonoBehaviour {
                     if (Input.GetButtonDown("X(PS4)") || (Input.GetButtonDown("A")))
                     {
                         Application.LoadLevel(1);
+                        break;
                     }
 
                     if (Input.GetButtonDown("Square") || (Input.GetButtonDown("X(Xbox)")))
                     {
                         Application.LoadLevel(3);
+                        break;
                     }
 
                     if (Input.GetButtonDown("TouchPad") || (Input.GetButtonDown("Start")))
                     {
                         Application.LoadLevel(0);
+                        break;
                     }
                 }
                 break;
@@ -105,6 +118,7 @@ public class SceneManager : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Application.Quit();
+                    break;
                 }
 
                 if (GameManager.m_gameManager.m_useController)
@@ -112,11 +126,13 @@ public class SceneManager : MonoBehaviour {
                     if (Input.GetButtonDown("X(PS4)") || (Input.GetButtonDown("A")))
                     {
                         Application.LoadLevel(1);
+                        break;
                     }
 
                     if (Input.GetButtonDown("TouchPad") || (Input.GetButtonDown("Start")))
                     {
                         Application.LoadLevel(0);
+                        break;
                     }
                 }
                 break;
