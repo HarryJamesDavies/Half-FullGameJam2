@@ -9,54 +9,90 @@ public class WorkerScript : MonoBehaviour {
 
     private string m_thirsty;
     private string m_hungry;
+    private string m_print;
+    private string m_toilet;
+    string m_currentDesire;
+
+    //a random list position
     private static int m_randomListPosition;
 
     void start()
     {
         WorkerManager.worker_instance.AddGameObject(gameObject);
+        SendWorkerToDesire();
     }
 
-    void Awake ()
+    void Awake()
     {
         m_DesireList = new List<string>();
         m_thirsty = "thirsty";
         m_hungry = "hungry";
+        m_print = "print";
+        m_toilet = "toilet";
 
         AddDesireToList();
         GetRandomListPosition();
+        AssignDesireToWorker();
+        SendWorkerToDesire();
+    }
 
+    IEnumerator ExecuteAfterTime()
+    {
+        yield return new WaitForSeconds(10);
+
+        Debug.Log("Time is up");
     }
 
     private void AddDesireToList()
     {
         m_DesireList.Add(m_thirsty);
         m_DesireList.Add(m_hungry);
+        m_DesireList.Add(m_print);
+        m_DesireList.Add(m_toilet);
     }
 
     private void GetRandomListPosition()
     {
-        int m_randomListPosition = Random.Range(0, 2);
-        Debug.Log(m_randomListPosition);
+        m_randomListPosition = Random.Range(0, m_DesireList.Count);
+    }
+
+    private void AssignDesireToWorker()
+    {
+        m_currentDesire = m_DesireList[m_randomListPosition];
+        Debug.Log(m_currentDesire);
+    }
+
+    private void SendWorkerToDesire()
+    {
+        if (m_currentDesire == m_thirsty)
+        {
+            //starts a timer that will run for the length of time the task must be carried out 
+            StartCoroutine("ExecuteAfterTime");
+
+            //send worker to drinks station
+        }
+        if (m_currentDesire == m_hungry)
+        {
+            //starts a timer that will run for the length of time the task must be carried out 
+            StartCoroutine("ExecuteAfterTime");
+
+            //send worker to canteen
+        }
+        if (m_currentDesire == m_toilet)
+        {
+            //starts a timer that will run for the length of time the task must be carried out 
+            StartCoroutine("ExecuteAfterTime");
+
+            //send worker to toilets
+        }
+        if (m_currentDesire == m_print)
+        {
+            //starts a timer that will run for the length of time the task must be carried out 
+            StartCoroutine("ExecuteAfterTime");
+
+            //send worker to printer
+        }
+
     }
 
 }
-
-
-
-
-
-
-
-//add all of the desires to the list 
-
-//select a random desire for each worker
-//move towards desire
-//start a timer to acheieve the desire
-
-//if the desire has not been achieved 
-//start incrementing annoyance 
-
-//if the desire has been acheievd 
-//decrement annoyance
-
-// Use this for initialization
