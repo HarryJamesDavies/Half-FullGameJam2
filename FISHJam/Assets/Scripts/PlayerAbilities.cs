@@ -250,7 +250,17 @@ public class PlayerAbilities : MonoBehaviour
         if (_collider.gameObject.tag == "Interactable")
         {
             m_currentInteractable = _collider.gameObject;
-            //m_stateOfObject = m_currentInteractable.GetComponent<InteractableBase>().GetState().ToString();
+            m_stateOfObject = m_currentInteractable.GetComponent<InteractableBase>().GetStateString();
+            m_objectState.text = m_stateOfObject;
+        }
+    }
+
+    void OnTriggerStay(Collider _collider)
+    {
+        if (_collider.gameObject.tag == "Interactable")
+        {
+            m_stateOfObject = m_currentInteractable.GetComponent<InteractableBase>().GetStateString();
+            m_objectState.text = m_stateOfObject;
         }
     }
 
@@ -259,6 +269,8 @@ public class PlayerAbilities : MonoBehaviour
         if (_collider.gameObject == m_currentInteractable)
         {
             m_currentInteractable = null;
+            m_stateOfObject = "NORMAL";
+            m_objectState.text = m_stateOfObject;
         }
     }
 }
