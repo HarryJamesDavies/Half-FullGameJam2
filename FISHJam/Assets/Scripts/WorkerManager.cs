@@ -14,12 +14,11 @@ public class WorkerManager : MonoBehaviour {
 
     void Start()
     {
-        StartCoroutine(SpawnAllWorkers());              
+        StartCoroutine(SpawnAllWorkers());
     }
-
     // Use this for initialization
     void Awake()
-    { 
+    {
         if (worker_instance == null)
         {
             worker_instance = this;
@@ -41,7 +40,7 @@ public class WorkerManager : MonoBehaviour {
     {
         for (int i = 0; i < m_currentWorkerPop; i++)
         {
-            //spawn the enemy
+            //spawn the enemy and add it to the list
            GameObject temp = (GameObject) Instantiate(m_Worker, spawnPoint.position, spawnPoint.rotation);
            m_WorkerList.Add(temp);
             //And wait 1 second to spawn another
