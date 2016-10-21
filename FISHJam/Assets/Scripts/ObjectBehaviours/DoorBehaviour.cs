@@ -61,7 +61,7 @@ public class DoorBehaviour : MonoBehaviour
         }
         else
         {
-            m_animator.SetBool("m_open", false);
+            m_animator.SetBool("m_open", true);
         }
     }
 
