@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Interactable
   - NPCPosition
-  - Player
   - WorkerSpawn
   layers:
   - Default
