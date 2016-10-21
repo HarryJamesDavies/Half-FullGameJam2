@@ -44,30 +44,57 @@ public class SceneManager : MonoBehaviour {
                 //controls on both controllers for navigating the menu
                 if (GameManager.m_gameManager.m_useController)
                 {
-                    if (Input.GetButtonDown("X(PS4)") || (Input.GetButtonDown("A")))
+                    if (GameManager.m_gameManager.m_controllerType == "Xbox")
                     {
-                        Debug.Log("X/A pressed.");
-                        Application.LoadLevel(1);
-                        break;
-                    }
+                        if (Input.GetButtonDown("A"))
+                        {
+                            Application.LoadLevel(1);
+                            break;
+                        }
 
-                    if (Input.GetButtonDown("Triangle") || (Input.GetButtonDown("Y")))
-                    {
-                        Application.LoadLevel(2);
-                        break;
-                    }
+                        if (Input.GetButtonDown("Y"))
+                        {
+                            Application.LoadLevel(2);
+                            break;
+                        }
 
-                    if (Input.GetButtonDown("Square") || (Input.GetButtonDown("X(Xbox)")))
-                    {
-                        Debug.Log("Square/X pressed.");
-                        Application.LoadLevel(3);
-                        break;
-                    }
+                        if (Input.GetButtonDown("X(Xbox)"))
+                        {
+                            Application.LoadLevel(3);
+                            break;
+                        }
 
-                    if (Input.GetButtonDown("TouchPad") || (Input.GetButtonDown("Start")))
+                        if (Input.GetButtonDown("Start"))
+                        {
+                            Application.Quit();
+                            break;
+                        }
+                    }
+                    else if (GameManager.m_gameManager.m_controllerType == "PS4")
                     {
-                        Application.Quit();
-                        break;
+                        if (Input.GetButtonDown("X(PS4)"))
+                        {
+                            Application.LoadLevel(1);
+                            break;
+                        }
+
+                        if (Input.GetButtonDown("Triangle"))
+                        {
+                            Application.LoadLevel(2);
+                            break;
+                        }
+
+                        if (Input.GetButtonDown("Square"))
+                        {
+                            Application.LoadLevel(3);
+                            break;
+                        }
+
+                        if (Input.GetButtonDown("TouchPad"))
+                        {
+                            Application.Quit();
+                            break;
+                        }
                     }
                 }
                 break;
@@ -81,10 +108,21 @@ public class SceneManager : MonoBehaviour {
                 //controls on both controllers for navigating the menu
                 if (GameManager.m_gameManager.m_useController)
                 {
-                    if (Input.GetButtonDown("TouchPad") || (Input.GetButtonDown("Start")))
+                    if (GameManager.m_gameManager.m_controllerType == "Xbox")
                     {
-                        Application.LoadLevel(0);
-                        break;
+                        if (Input.GetButtonDown("Start"))
+                        {
+                            Application.LoadLevel(0);
+                            break;
+                        }
+                    }
+                    else if (GameManager.m_gameManager.m_controllerType == "PS4")
+                    {
+                        if (Input.GetButtonDown("TouchPad"))
+                        {
+                            Application.LoadLevel(0);
+                            break;
+                        }
                     }
                 }
                 break;
@@ -98,22 +136,45 @@ public class SceneManager : MonoBehaviour {
                 //controls on both controllers for navigating the menu
                 if (GameManager.m_gameManager.m_useController)
                 {
-                    if (Input.GetButtonDown("X(PS4)") || (Input.GetButtonDown("A")))
+                    if (GameManager.m_gameManager.m_controllerType == "Xbox")
                     {
-                        Application.LoadLevel(1);
-                        break;
-                    }
+                        if (Input.GetButtonDown("A"))
+                        {
+                            Application.LoadLevel(1);
+                            break;
+                        }
 
-                    if (Input.GetButtonDown("Square") || (Input.GetButtonDown("X(Xbox)")))
-                    {
-                        Application.LoadLevel(3);
-                        break;
-                    }
+                        if (Input.GetButtonDown("X(Xbox)"))
+                        {
+                            Application.LoadLevel(3);
+                            break;
+                        }
 
-                    if (Input.GetButtonDown("TouchPad") || (Input.GetButtonDown("Start")))
+                        if (Input.GetButtonDown("Start"))
+                        {
+                            Application.LoadLevel(0);
+                            break;
+                        }
+                    }
+                    else if (GameManager.m_gameManager.m_controllerType == "PS4")
                     {
-                        Application.LoadLevel(0);
-                        break;
+                        if (Input.GetButtonDown("X(PS4)"))
+                        {
+                            Application.LoadLevel(1);
+                            break;
+                        }
+
+                        if (Input.GetButtonDown("Square"))
+                        {
+                            Application.LoadLevel(3);
+                            break;
+                        }
+
+                        if (Input.GetButtonDown("TouchPad"))
+                        {
+                            Application.LoadLevel(0);
+                            break;
+                        }
                     }
                 }
                 break;
@@ -127,16 +188,73 @@ public class SceneManager : MonoBehaviour {
                 //controls on both controllers for navigating the menu
                 if (GameManager.m_gameManager.m_useController)
                 {
-                    if (Input.GetButtonDown("X(PS4)") || (Input.GetButtonDown("A")))
+                    if (GameManager.m_gameManager.m_controllerType == "Xbox")
                     {
-                        Application.LoadLevel(1);
-                        break;
-                    }
+                        if (Input.GetButtonDown("A"))
+                        {
+                            Application.LoadLevel(1);
+                            break;
+                        }
 
-                    if (Input.GetButtonDown("TouchPad") || (Input.GetButtonDown("Start")))
+                        if (Input.GetButtonDown("Start"))
+                        {
+                            Application.LoadLevel(0);
+                            break;
+                        }
+                    }
+                    else if (GameManager.m_gameManager.m_controllerType == "PS4")
                     {
-                        Application.LoadLevel(0);
-                        break;
+                        if (Input.GetButtonDown("X(PS4)"))
+                        {
+                            Application.LoadLevel(1);
+                            break;
+                        }
+
+                        if (Input.GetButtonDown("TouchPad"))
+                        {
+                            Application.LoadLevel(0);
+                            break;
+                        }
+                    }
+                }
+                break;
+            case 4:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Application.Quit();
+                    break;
+                }
+
+                //controls on both controllers for navigating the menu
+                if (GameManager.m_gameManager.m_useController)
+                {
+                    if (GameManager.m_gameManager.m_controllerType == "Xbox")
+                    {
+                        if (Input.GetButtonDown("B"))
+                        {
+                            Application.LoadLevel(0);
+                            break;
+                        }
+
+                        if (Input.GetButtonDown("Start"))
+                        {
+                            Application.Quit();
+                            break;
+                        }
+                    }
+                    else if (GameManager.m_gameManager.m_controllerType == "PS4")
+                    {
+                        if (Input.GetButtonDown("Circle"))
+                        {
+                            Application.LoadLevel(0);
+                            break;
+                        }
+
+                        if (Input.GetButtonDown("TouchPad"))
+                        {
+                            Application.Quit();
+                            break;
+                        }
                     }
                 }
                 break;

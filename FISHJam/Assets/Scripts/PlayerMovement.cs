@@ -23,16 +23,12 @@ public class PlayerMovement : MonoBehaviour
         //checks if controller is plugged in and applies correct player movement
         if (GameManager.m_gameManager.m_useController)
         {
-            Debug.Log("Controller input");
-
             //constantly apply joystick axis input to player position
             transform.position += new Vector3(Input.GetAxis("LeftJoystickX") * m_speed, 0.0f, -Input.GetAxis("LeftJoystickY") * m_speed);
             //transform.position += new Vector3(Camera.main.transform.position.x, 0.0f, Camera.main.transform.position.z);
         }
         else
         {
-            Debug.Log("Mouse control");
-
             //apply player position to mouse position and move player with camera
             transform.position = new Vector3(Input.mousePosition.x / 100, 0.0f, Input.mousePosition.y / 100);
             transform.position -= m_offset;
