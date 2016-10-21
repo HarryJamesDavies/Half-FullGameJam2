@@ -23,12 +23,14 @@ public class ControllerManager : MonoBehaviour {
             if (Input.GetJoystickNames()[i] == "Wireless Controller")
             {
                 GameManager.m_gameManager.m_useController = true;
+                GameManager.m_gameManager.m_controllerType = "PS4";
                 m_joystickIterator--;
             }
             //check name for X1 controller
             else if (Input.GetJoystickNames()[i] == "Controller (Xbox One For Windows)")
             {
                 GameManager.m_gameManager.m_useController = true;
+                GameManager.m_gameManager.m_controllerType = "Xbox";
                 m_joystickIterator--;
             }
             else
@@ -40,8 +42,11 @@ public class ControllerManager : MonoBehaviour {
                 if (m_joystickIterator >= Input.GetJoystickNames().Length)
                 {
                     GameManager.m_gameManager.m_useController = false;
+                    GameManager.m_gameManager.m_controllerType = " ";
                 }
             }
         }
+
+        Debug.Log("Connected controller: " + GameManager.m_gameManager.m_controllerType);
     }
 }

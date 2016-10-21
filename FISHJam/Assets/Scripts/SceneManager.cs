@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SceneManager : MonoBehaviour {
 
+    //functions for all menu button presses
     public void MainMenuClick()
     {
         Application.LoadLevel(0);
@@ -30,7 +31,7 @@ public class SceneManager : MonoBehaviour {
 
     void Update()
     {
-        //menu and quit button switch statement
+        //quit and menu buttons switch statement
         switch (Application.loadedLevel)
         {
             case 0:
@@ -40,7 +41,7 @@ public class SceneManager : MonoBehaviour {
                     break;
                 }
 
-                //controller main menu inputs
+                //controls on both controllers for navigating the menu
                 if (GameManager.m_gameManager.m_useController)
                 {
                     if (Input.GetButtonDown("X(PS4)") || (Input.GetButtonDown("A")))
@@ -77,6 +78,7 @@ public class SceneManager : MonoBehaviour {
                     break;
                 }
 
+                //controls on both controllers for navigating the menu
                 if (GameManager.m_gameManager.m_useController)
                 {
                     if (Input.GetButtonDown("TouchPad") || (Input.GetButtonDown("Start")))
@@ -93,6 +95,7 @@ public class SceneManager : MonoBehaviour {
                     break;
                 }
 
+                //controls on both controllers for navigating the menu
                 if (GameManager.m_gameManager.m_useController)
                 {
                     if (Input.GetButtonDown("X(PS4)") || (Input.GetButtonDown("A")))
@@ -121,6 +124,7 @@ public class SceneManager : MonoBehaviour {
                     break;
                 }
 
+                //controls on both controllers for navigating the menu
                 if (GameManager.m_gameManager.m_useController)
                 {
                     if (Input.GetButtonDown("X(PS4)") || (Input.GetButtonDown("A")))

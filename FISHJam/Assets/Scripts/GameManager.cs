@@ -6,10 +6,12 @@ public class GameManager : MonoBehaviour {
     public static GameManager m_gameManager = null;
 
     public bool m_useController;
+    public string m_controllerType;
 
     void Awake()
     {
         m_useController = false;
+        m_controllerType = " ";
         
         //make sure singleton is properly initialised
         if (m_gameManager == null)
