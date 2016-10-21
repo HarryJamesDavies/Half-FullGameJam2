@@ -46,7 +46,5 @@ public class ControllerManager : MonoBehaviour {
                 }
             }
         }
-
-        Debug.Log("Connected controller: " + GameManager.m_gameManager.m_controllerType);
     }
 }

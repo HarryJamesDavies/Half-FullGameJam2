@@ -33,52 +33,180 @@ public class PlayerAbilities : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (GameManager.m_gameManager.m_useController)
         {
-            if (m_state != InteractableStates.TOGGLE)
+            switch (GameManager.m_gameManager.m_controllerType)
             {
-                m_state = InteractableStates.TOGGLE;
+                case "Xbox":
+                    //Xbox controller ability changes
+
+                    //Press A to change Toggle ability
+                    if (Input.GetButtonDown("A"))
+                    {
+                        if (m_state != InteractableStates.TOGGLE)
+                        {
+                            m_state = InteractableStates.TOGGLE;
+                        }
+                        else
+                        {
+                            m_state = InteractableStates.NORMAL;
+                        }
+                    }
+
+                    //Press B to change Modify ability
+                    if (Input.GetButtonDown("B"))
+                    {
+                        if (m_state != InteractableStates.MODIFY)
+                        {
+                            m_state = InteractableStates.MODIFY;
+                        }
+                        else
+                        {
+                            m_state = InteractableStates.NORMAL;
+                        }
+                    }
+
+                    //Press X to change Swap ability
+                    if (Input.GetButtonDown("X(Xbox)"))
+                    {
+                        if (m_state != InteractableStates.SWAP)
+                        {
+                            m_state = InteractableStates.SWAP;
+                        }
+                        else
+                        {
+                            m_state = InteractableStates.NORMAL;
+                        }
+                    }
+
+                    //Press Y to change ability to normal
+                    if (Input.GetButtonDown("Y"))
+                    {
+                        m_state = InteractableStates.NORMAL;
+                    }
+
+                    //Press Right trigger to activate ability over an interactable object
+                    if (m_currentInteractable != null)
+                    {
+                        if (Input.GetAxis("Triggers") < 0.0f)
+                        {
+                            Debug.Log("Right Trigger pulled");
+                            m_currentInteractable.GetComponent<InteractableBase>().SetState(m_state);
+                        }
+                    }
+
+                    break;
+                case "PS4":
+                    //PS4 controller ability changes
+
+                    //Press X to change Toggle ability
+                    if (Input.GetButtonDown("X(PS4)"))
+                    {
+                        if (m_state != InteractableStates.TOGGLE)
+                        {
+                            m_state = InteractableStates.TOGGLE;
+                        }
+                        else
+                        {
+                            m_state = InteractableStates.NORMAL;
+                        }
+                    }
+
+                    //Press Circle to change Modify ability
+                    if (Input.GetButtonDown("Circle"))
+                    {
+                        if (m_state != InteractableStates.MODIFY)
+                        {
+                            m_state = InteractableStates.MODIFY;
+                        }
+                        else
+                        {
+                            m_state = InteractableStates.NORMAL;
+                        }
+                    }
+
+                    //Press Square to change Swap ability
+                    if (Input.GetButtonDown("Square"))
+                    {
+                        if (m_state != InteractableStates.SWAP)
+                        {
+                            m_state = InteractableStates.SWAP;
+                        }
+                        else
+                        {
+                            m_state = InteractableStates.NORMAL;
+                        }
+                    }
+
+                    //Press Triangle to change ability to normal
+                    if (Input.GetButtonDown("Triangle"))
+                    {
+                        m_state = InteractableStates.NORMAL;
+                    }
+
+                    //Press R2 to activate ability over an interactable object
+                    if (m_currentInteractable != null)
+                    {
+                        if (Input.GetAxis("R2") > -1.0f)
+                        {
+                            Debug.Log("R2 pulled");
+                            m_currentInteractable.GetComponent<InteractableBase>().SetState(m_state);
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
-            else
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if (m_state != InteractableStates.TOGGLE)
+                {
+                    m_state = InteractableStates.TOGGLE;
+                }
+                else
+                {
+                    m_state = InteractableStates.NORMAL;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                if (m_state != InteractableStates.MODIFY)
+                {
+                    m_state = InteractableStates.MODIFY;
+                }
+                else
+                {
+                    m_state = InteractableStates.NORMAL;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (m_state != InteractableStates.SWAP)
+                {
+                    m_state = InteractableStates.SWAP;
+                }
+                else
+                {
+                    m_state = InteractableStates.NORMAL;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 m_state = InteractableStates.NORMAL;
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            if (m_state != InteractableStates.MODIFY)
+            if (m_currentInteractable != null)
             {
-                m_state = InteractableStates.MODIFY;
-            }
-            else
-            {
-                m_state = InteractableStates.NORMAL;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            if (m_state != InteractableStates.SWAP)
-            {
-                m_state = InteractableStates.SWAP;
-            }
-            else
-            {
-                m_state = InteractableStates.NORMAL;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            m_state = InteractableStates.NORMAL;
-        }
-
-        if (m_currentInteractable != null)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                m_currentInteractable.GetComponent<InteractableBase>().SetState(m_state);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    m_currentInteractable.GetComponent<InteractableBase>().SetState(m_state);
+                }
             }
         }
 	}
