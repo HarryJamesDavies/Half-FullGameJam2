@@ -46,6 +46,7 @@ GameObject:
   - 65: {fileID: 6591440}
   - 114: {fileID: 11434596}
   - 95: {fileID: 9574322}
+  - 114: {fileID: 11411730}
   m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Interactable
@@ -396,6 +397,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11411730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432a7318f33970a4195d1573a2ca060c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11434596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,6 +421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_state: 0
   m_active: 0
+  m_type: 0
+  m_inUse: 0
 --- !u!136 &13601782
 CapsuleCollider:
   m_ObjectHideFlags: 1

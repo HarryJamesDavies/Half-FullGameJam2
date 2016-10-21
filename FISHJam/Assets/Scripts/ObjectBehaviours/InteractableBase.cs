@@ -1,10 +1,21 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class InteractableBase : MonoBehaviour {
 
+    public enum ObjectType
+    {
+        TABLE = 0,
+        DOOR = 1,
+        WATERCOOLER = 2,
+        TOILET = 3
+    }
+
     public PlayerAbilities.InteractableStates m_state;
-    public bool m_active = false;   
+    public bool m_active = false; //Set true when apllying a new state
+    public ObjectType m_type; //Set in inspector to tag
+    public bool m_inUse; //set ture when NPC is using it
 
     public void SetState(PlayerAbilities.InteractableStates _state)
     {

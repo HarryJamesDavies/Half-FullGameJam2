@@ -160,6 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_state: 0
   m_active: 0
+  m_type: 0
+  m_inUse: 0
 --- !u!114 &11499052
 MonoBehaviour:
   m_ObjectHideFlags: 1
