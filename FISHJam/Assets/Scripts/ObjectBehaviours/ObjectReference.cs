@@ -19,4 +19,27 @@ public class ObjectReference : MonoBehaviour
         m_position = _position;
         m_inUse = _inUse;
     }
+
+    public void UpdateObjectReference()
+    {
+        if(m_type != m_object.GetComponent<InteractableBase>().m_type)
+        {
+            m_type = m_object.GetComponent<InteractableBase>().m_type;
+        }
+
+        if (m_state != m_object.GetComponent<InteractableBase>().m_state)
+        {
+            m_state = m_object.GetComponent<InteractableBase>().m_state;
+        }
+
+        if (m_position != m_object.transform.position)
+        {
+            m_position = m_object.transform.position;
+        }
+
+        if (m_inUse != m_object.GetComponent<InteractableBase>().m_inUse)
+        {
+            m_inUse = m_object.GetComponent<InteractableBase>().m_inUse;
+        }
+    }
 }
