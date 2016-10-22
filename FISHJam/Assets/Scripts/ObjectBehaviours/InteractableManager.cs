@@ -112,7 +112,7 @@ public class InteractableManager : MonoBehaviour
 
         if (objectReference == null)
         {
-            objectReference = referenceOfType[0];
+            objectReference = referenceOfType[0]; //BREAKS HERE
         }
 
         foreach (Transform reference in referenceOfType)
