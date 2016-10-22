@@ -171,7 +171,7 @@ GameObject:
   - 23: {fileID: 2373240}
   m_Layer: 0
   m_Name: Sceen
-  m_TagString: Untagged
+  m_TagString: Screen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -616,7 +616,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7d0376f549ef8754a9891aba564b92af, type: 2}
+  - {fileID: 2100000, guid: c528fcc8526ab114d923cd5a97e2c683, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -912,6 +912,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4c4277bb170eb428c3e499f8bcfa59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_imageNum: 0
+  m_textures:
+  - {fileID: 2800000, guid: c38cd8ecea622a84da9a98d1220f8bae, type: 3}
+  - {fileID: 2800000, guid: a432f8720f09c854fbc33419badd3574, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
