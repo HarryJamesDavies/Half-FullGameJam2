@@ -10,13 +10,13 @@ public class InteractableManager : MonoBehaviour
         TABLE = 0,
         DOOR = 1,
         WATERCOOLER = 2,
-        TOILET = 3
+        TOILET = 3,
+        PRINTER = 4
     }
 
     public static InteractableManager m_instance = null;
     public List<Transform> m_objectReferences = new List<Transform>();
     public Transform m_referenceHolder;
-    public bool once = true;
 
     // Use this for initialization
     void Awake()
@@ -53,7 +53,7 @@ public class InteractableManager : MonoBehaviour
             {
                 if (objects.transform.GetChild(i).tag == "NPCPosition")
                 {
-                    objectPosition = objects.transform.GetChild(i).transform.position;
+                    objectPosition = objects.transform.GetChild(i).transform.localPosition;
                 }
             }
 
