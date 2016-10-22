@@ -92,7 +92,7 @@ public class AiMovement : MonoBehaviour {
     //this functions sets the goal to whatever you want it to be by raycasting out to find a collider
     public void setGoal()
     {
-        InteractableManager manager = FindObjectOfType<InteractableManager>();
+        //InteractableManager manager = FindObjectOfType<InteractableManager>();
 
         InteractableManager.ObjectType type;
 
@@ -121,7 +121,7 @@ public class AiMovement : MonoBehaviour {
             type = InteractableManager.ObjectType.TOILET;
         }
 
-        _goal = manager.GetObjectOfType(type, true, true, gameObject.transform.position).gameObject;
+        _goal = InteractableManager.m_instance.GetObjectOfType(type, true, true, gameObject.transform.position).gameObject; //BREAKS HERE
 
         /*for (int iter = 0; manager.m_objectReferences.Count > iter; iter++)
         {
@@ -141,7 +141,7 @@ public class AiMovement : MonoBehaviour {
                 _goal = manager.m_objectReferences[iter].gameObject;
                 break;
             }
-            else if (m_desire == "toilet" && manager.m_objectReferences[iter].m_type == InteractableManager.ObjectType.TOILET)
+            else if (m_desire == "toilet" && manager.m_objectReferences[iter].g == InteractableManager.ObjectType.TOILET)
             {
                 _goal = manager.m_objectReferences[iter].gameObject;
                 break;
