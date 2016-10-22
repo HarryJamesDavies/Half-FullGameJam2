@@ -76,7 +76,7 @@ public class AiMovement : MonoBehaviour {
         
     }
 
-    void OnTriggerEnter(Collider _collider)
+    void OnTriggerStay(Collider _collider)
     {
         if(_collider == m_goal.GetComponent<Collider>() && m_state == (int)aiState.goingToDesire)
         {
@@ -92,42 +92,82 @@ public class AiMovement : MonoBehaviour {
     //this functions sets the goal to whatever you want it to be by raycasting out to find a collider
     public void setGoal()
     {
-        Vector3 direction = new Vector3(10.0f, 10.0f, 10.0f);
-        RaycastHit[] colliders = Physics.SphereCastAll(gameObject.transform.position, 10.0f, direction);
-        
-        
-        for (int iter = 0; colliders.Length >= iter; iter++)
+        InteractableManager manager = FindObjectOfType<InteractableManager>();
+
+        InteractableManager.ObjectType type;
+
+        if (m_desire == "thirsty")
         {
-            if(m_desire == "thirsty" && colliders[iter].collider.gameObject.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.WATERCOOLER)
+            type = InteractableManager.ObjectType.TOILET;
+            
+        }
+        else if (m_desire == "hungry")
+        {
+            type = InteractableManager.ObjectType.TOILET;
+
+        }
+        else if (m_desire == "print")
+        {
+            type = InteractableManager.ObjectType.TOILET;
+
+        }
+        else if (m_desire == "toilet")
+        {
+            type = InteractableManager.ObjectType.TOILET;
+
+        }
+        else
+        {
+            type = InteractableManager.ObjectType.TOILET;
+        }
+
+        _goal = manager.GetObjectOfType(type, true, true, gameObject.transform.position).gameObject;
+
+        /*for (int iter = 0; manager.m_objectReferences.Count > iter; iter++)
+        {
+            
+            if(m_desire == "thirsty" && manager.GetObjectOfType() == InteractableManager.ObjectType.TOILET)
             {
-                _goal = colliders[iter].collider.gameObject;
+                _goal = manager.m_objectReferences[iter].gameObject;
+                break;
             }
-            else if(m_desire == "hungry" && colliders[iter].collider.gameObject.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TABLE)
+            else if(m_desire == "hungry" && manager.m_objectReferences[iter].m_type == InteractableManager.ObjectType.TOILET)
             {
-                _goal = colliders[iter].collider.gameObject;
+                _goal = manager.m_objectReferences[iter].gameObject;
+                break;
             }
-            else if (m_desire == "print" && colliders[iter].collider.gameObject.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TABLE)
+            else if (m_desire == "print" && manager.m_objectReferences[iter].m_type == InteractableManager.ObjectType.TOILET)
             {
-                _goal = colliders[iter].collider.gameObject;
+                _goal = manager.m_objectReferences[iter].gameObject;
+                break;
             }
-            else if (m_desire == "toilet" && colliders[iter].collider.gameObject.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TOILET)
+            else if (m_desire == "toilet" && manager.m_objectReferences[iter].m_type == InteractableManager.ObjectType.TOILET)
             {
-                _goal = colliders[iter].collider.gameObject;
+                _goal = manager.m_objectReferences[iter].gameObject;
+                break;
             }
             else
             {
                 _goal = null;
             }
-        }
+        }*/
         m_goal = _goal;
     }
 
     //this function starts the worker moving towards the goal
     void moveTowardsGoal()
     {
-        m_agent.destination = m_goal.transform.Find("NPCPosition").transform.position;
-        m_state = (int)aiState.goingToDesire;
-        animation.Play("Walk");
+        if(m_goal == null)
+        {
+            m_state = (int)aiState.needsToMove;
+        }
+        else
+        {
+            m_agent.destination = m_goal.transform.localPosition;//.Find("NPCPosition").transform.position;
+            m_state = (int)aiState.goingToDesire;
+            animation.Play("Walk");
+        }
+        
     }
 
     //this function simply checks to see if it can put the agent back onto the navmesh if it falls off
