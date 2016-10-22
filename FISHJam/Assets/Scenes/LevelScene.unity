@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_WorkerList: []
-  m_Worker: {fileID: 111466, guid: b3f2f7fa6b6dcae46b1cb0ae26e874a2, type: 2}
+  m_Worker: {fileID: 123966, guid: 1f9e937349f4d1c45847b2c14531bfc6, type: 2}
   spawnPoint: {fileID: 768419291}
 --- !u!4 &788923107
 Transform:
