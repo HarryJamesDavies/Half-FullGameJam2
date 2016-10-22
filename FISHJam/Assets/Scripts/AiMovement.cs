@@ -3,14 +3,14 @@ using System.Collections;
 
 public class AiMovement : MonoBehaviour {
 
-    enum tempDesireEnum
+   /* enum tempDesireEnum
     {
         caffeteria,
         managerOffice,
         mainRoom,
         toilet,
         printer
-    }
+    }*/
 
     enum aiState
     {
@@ -19,6 +19,9 @@ public class AiMovement : MonoBehaviour {
         goingToDesire,
         arrivedAtDesire
     }
+
+    public Animator animation;
+
     public GameObject m_goal;
     private GameObject _goal;
     public NavMeshAgent m_agent;
@@ -31,6 +34,8 @@ public class AiMovement : MonoBehaviour {
         m_agent = GetComponent<NavMeshAgent>();
         m_desires = gameObject.GetComponent<WorkerScript>();
         m_state = (int)aiState.needsDesire;
+        animation = gameObject.GetComponent<Animator>();
+        animation.Play("Neutral");
     }
 
     //main state machine for the AI is done in the update
@@ -40,31 +45,43 @@ public class AiMovement : MonoBehaviour {
         {
             //simulateDesire();
             getDesire();
-            m_state = (int)aiState.needsToMove;
+            if(m_desire == null)
+            {
+
+            }
+            else
+            {
+                m_state = (int)aiState.needsToMove;
+            }
+            
         }
         else if(m_state == (int)aiState.needsToMove)
         {
+            
             setGoal();
             //m_state = (int)aiState.goingToDesire;
             moveTowardsGoal();
         }
         else if (m_state == (int)aiState.goingToDesire)
         {
-            //check to see if arrived yet
+            //check to see if arrived yet which is done in OnTriggerEnter
         }
         else if (m_state == (int)aiState.arrivedAtDesire)
         {
+            wait();
             //has arrived so change the worker's desires slightly over time
             //once full, set state to needs desire
+            m_state = (int)aiState.needsDesire;
         }
         
     }
 
     void OnTriggerEnter(Collider _collider)
     {
-        if(_collider == m_goal.GetComponent<Collider>())
+        if(_collider == m_goal.GetComponent<Collider>() && m_state == (int)aiState.goingToDesire)
         {
             m_state = (int)aiState.arrivedAtDesire;
+            animation.Play("Work");
         }
         else
         {
@@ -75,24 +92,25 @@ public class AiMovement : MonoBehaviour {
     //this functions sets the goal to whatever you want it to be by raycasting out to find a collider
     public void setGoal()
     {
-        RaycastHit[] colliders = Physics.SphereCastAll(gameObject.transform.position, 10.0f, Vector3.zero);
+        Vector3 direction = new Vector3(10.0f, 10.0f, 10.0f);
+        RaycastHit[] colliders = Physics.SphereCastAll(gameObject.transform.position, 10.0f, direction);
         
         
-        for (int iter = 0; colliders.Length > iter; iter++)
+        for (int iter = 0; colliders.Length >= iter; iter++)
         {
-            if(m_desire == "thirsty" && colliders[iter].collider.tag == "WaterCooler")
+            if(m_desire == "thirsty" && colliders[iter].collider.gameObject.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.WATERCOOLER)
             {
                 _goal = colliders[iter].collider.gameObject;
             }
-            else if(m_desire == "hungry" && colliders[iter].collider.tag == "CaffeteriaTable")
+            else if(m_desire == "hungry" && colliders[iter].collider.gameObject.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TABLE)
             {
                 _goal = colliders[iter].collider.gameObject;
             }
-            else if (m_desire == "print" && colliders[iter].collider.tag == "Printer")
+            else if (m_desire == "print" && colliders[iter].collider.gameObject.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TABLE)
             {
                 _goal = colliders[iter].collider.gameObject;
             }
-            else if (m_desire == "toilet" && colliders[iter].collider.tag == "toilet")
+            else if (m_desire == "toilet" && colliders[iter].collider.gameObject.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TOILET)
             {
                 _goal = colliders[iter].collider.gameObject;
             }
@@ -109,6 +127,7 @@ public class AiMovement : MonoBehaviour {
     {
         m_agent.destination = m_goal.transform.Find("NPCPosition").transform.position;
         m_state = (int)aiState.goingToDesire;
+        animation.Play("Walk");
     }
 
     //this function simply checks to see if it can put the agent back onto the navmesh if it falls off
@@ -140,5 +159,10 @@ public class AiMovement : MonoBehaviour {
         m_desire = m_desires.m_currentDesire;
     }
 
-    
+    IEnumerator wait()
+    {
+        //print(Time.time);
+        yield return new WaitForSeconds(5);
+        //print(Time.time);
+    }
 }

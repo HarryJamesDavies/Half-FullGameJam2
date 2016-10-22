@@ -9,7 +9,7 @@ public class WorkerManager : MonoBehaviour {
     [SerializeField]
     public List<GameObject> m_WorkerList;
     public GameObject m_Worker;
-    private int m_currentWorkerPop = 10;
+    private int m_currentWorkerPop = 1;
     public Transform spawnPoint;
 
     void Start()
