@@ -45,12 +45,12 @@ public class TableBehaviour : MonoBehaviour
     {
         if (m_toggle)
         {
-            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            gameObject.transform.GetChild(3).GetComponent<Renderer>().material.color = Color.blue;
             m_toggle = false;
         }
         else
         {
-            gameObject.GetComponent<Renderer>().material.color = Color.white;
+            gameObject.transform.GetChild(3).GetComponent<Renderer>().material.color = Color.green;
             m_toggle = true;
         }
     }
