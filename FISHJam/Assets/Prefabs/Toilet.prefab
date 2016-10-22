@@ -26,9 +26,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 413418}
   - 65: {fileID: 6540964}
+  - 114: {fileID: 11419800}
   m_Layer: 0
   m_Name: 'NPCPosition '
-  m_TagString: Untagged
+  m_TagString: NPCPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,7 +248,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106490}
   m_LocalRotation: {x: -0.70710695, y: 0.00000023040464, z: 0.00000023040464, w: 0.7071066}
-  m_LocalPosition: {x: 3.3950005, y: 0.40099996, z: 0.25300026}
+  m_LocalPosition: {x: 3.321, y: 0.52, z: 0.129}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.20000003}
   m_Children: []
   m_Father: {fileID: 450792}
@@ -563,8 +564,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_state: 0
   m_active: 0
-  m_type: 0
+  m_type: 3
   m_inUse: 0
+--- !u!114 &11419800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6458c3e66f3144195c3d216413803d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &13538476
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -621,7 +633,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106490}
   serializedVersion: 2
-  lengthInSec: 6
+  lengthInSec: 6.94
   startDelay:
     scalar: 0
     maxCurve:
@@ -668,7 +680,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 1
+      scalar: 1.17
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -972,7 +984,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     randomizeRotationDirection: 0
-    gravityModifier: 0.3
+    gravityModifier: 0.1
     maxNumParticles: 200
     rotation3D: 0
   ShapeModule:
@@ -980,7 +992,7 @@ ParticleSystem:
     enabled: 1
     type: 4
     radius: 0.01
-    angle: 19.14
+    angle: 51.1
     length: 0.9
     boxX: 1
     boxY: 1
@@ -1000,7 +1012,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 100
+      scalar: 257.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
