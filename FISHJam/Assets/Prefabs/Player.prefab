@@ -141,6 +141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentInteractable: {fileID: 0}
   m_state: 0
+  m_abilityText: {fileID: 0}
+  m_objectState: {fileID: 0}
+  m_currentAbility: 
+  m_stateOfObject: 
 --- !u!114 &11410634
 MonoBehaviour:
   m_ObjectHideFlags: 1

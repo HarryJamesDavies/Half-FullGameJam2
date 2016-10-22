@@ -7,6 +7,7 @@ TagManager:
   - Interactable
   - NPCPosition
   - WorkerSpawn
+  - Screen
   layers:
   - Default
   - TransparentFX
