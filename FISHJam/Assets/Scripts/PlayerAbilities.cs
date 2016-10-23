@@ -11,7 +11,8 @@ public class PlayerAbilities : MonoBehaviour
         NORMAL = 0,
         TOGGLE = 1,
         MODIFY = 2,
-        SWAP = 3
+        SWAP = 3,
+        NumberOfTypes
     };
 
     public static PlayerAbilities instance = null;

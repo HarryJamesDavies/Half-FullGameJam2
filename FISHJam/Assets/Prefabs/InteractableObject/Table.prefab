@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11473552}
   - 114: {fileID: 11499052}
   - 54: {fileID: 5473926}
+  - 114: {fileID: 11466846}
   m_Layer: 0
   m_Name: Table
   m_TagString: Interactable
@@ -323,8 +324,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.598, y: 0.256, z: -1.097}
-  m_LocalScale: {x: 0.5, y: 0.1, z: 1}
+  m_LocalPosition: {x: 2.5733328, y: -2.093, z: -28.68}
+  m_LocalScale: {x: 1.6666666, y: 0.5, z: 3.3333333}
   m_Children:
   - {fileID: 462636}
   - {fileID: 451718}
@@ -886,6 +887,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6458c3e66f3144195c3d216413803d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11466846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a117294b2fa7a44cad6f76952882153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_type: 0
+  m_frustration:
+  - 0
+  - 2
+  - 3
+  - 4
+  m_suspicion:
+  - 0
+  - 2
+  - 3
+  - 4
 --- !u!114 &11473552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -912,12 +935,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4c4277bb170eb428c3e499f8bcfa59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_imageNum: 0
   m_textures:
   - {fileID: 2800000, guid: c38cd8ecea622a84da9a98d1220f8bae, type: 3}
   - {fileID: 2800000, guid: a432f8720f09c854fbc33419badd3574, type: 3}
   - {fileID: 2800000, guid: d94cfc87ee2803b48bb3ed7500c257d3, type: 3}
   - {fileID: 2800000, guid: bf650c96a0a58294886faeba9bddac65, type: 3}
+  m_imageNum: 0
+  m_waitLength: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

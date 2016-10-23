@@ -135,6 +135,7 @@ GameObject:
   - 114: {fileID: 11442556}
   - 95: {fileID: 9588394}
   - 65: {fileID: 6557008}
+  - 114: {fileID: 11418524}
   m_Layer: 0
   m_Name: Fridge
   m_TagString: Interactable
@@ -538,8 +539,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 118624}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0.43, y: -1.24, z: 5.04}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 17.85, y: -9.573, z: 15.83}
+  m_LocalScale: {x: 3.3333333, y: 5, z: 3.3333333}
   m_Children:
   - {fileID: 461750}
   - {fileID: 469460}
@@ -1270,6 +1271,28 @@ MonoBehaviour:
   m_active: 0
   m_type: 5
   m_inUse: 0
+--- !u!114 &11418524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a117294b2fa7a44cad6f76952882153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_type: 5
+  m_frustration:
+  - 0
+  - 2
+  - 3
+  - 4
+  m_suspicion:
+  - 0
+  - 2
+  - 3
+  - 4
 --- !u!114 &11442556
 MonoBehaviour:
   m_ObjectHideFlags: 1
