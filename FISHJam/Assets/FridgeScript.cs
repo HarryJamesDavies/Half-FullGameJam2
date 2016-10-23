@@ -54,6 +54,10 @@ public class FridgeScript : MonoBehaviour {
         {
             m_animator.SetBool("m_nworking", false);
         }
+        if (m_animator.GetBool("m_swap"))
+        {
+            m_animator.SetBool("m_swap", false);
+        }
 
     }
 
@@ -63,25 +67,31 @@ public class FridgeScript : MonoBehaviour {
         {
             m_animator.SetBool("m_working", true);
         }
+        if (!m_animator.GetBool("m_nworking"))
+        {
+            m_animator.SetBool("m_nworking", false);
+        }
+        if (m_animator.GetBool("m_swap"))
+        {
+            m_animator.SetBool("m_swap", false);
+        }
 
 
     }
 
     void SwapBehaviour()
     {
-        m_animator.SetBool("m_printerSpit", true);
-
-        if (m_animator.GetBool("m_printerNWork"))
+        if (!m_animator.GetBool("m_swap"))
         {
-            m_animator.SetBool("m_printerNWork", false);
+            m_animator.SetBool("m_swap", true);
         }
-        if (m_animator.GetBool("m_printerWork"))
+        if (!m_animator.GetBool("m_nworking"))
         {
-            m_animator.SetBool("m_printerWork", false);
+            m_animator.SetBool("m_nworking", false);
         }
-        if (m_animator.GetBool("m_broken"))
+        if (!m_animator.GetBool("m_working"))
         {
-            m_animator.SetBool("m_broken", false);
+            m_animator.SetBool("m_working", false);
         }
 
     }
