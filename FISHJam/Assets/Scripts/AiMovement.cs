@@ -76,9 +76,9 @@ public class AiMovement : MonoBehaviour {
         
     }
 
-    void OnTriggerStay(Collider _collider)
+    void OnTriggerEnter(Collider _collider)
     {
-        if(_collider == m_goal.GetComponent<Collider>() && m_state == (int)aiState.goingToDesire)
+        if((_collider.tag == "NPCPosition") && (m_state == (int)aiState.goingToDesire))
         {
             m_state = (int)aiState.arrivedAtDesire;
             animation.Play("Work");
@@ -121,7 +121,7 @@ public class AiMovement : MonoBehaviour {
             type = InteractableManager.ObjectType.TABLE;
         }
 
-        _goal = InteractableManager.m_instance.GetObjectOfType(type, true, true, gameObject.transform.position).gameObject; //BREAKS HERE
+        _goal = InteractableManager.m_instance.GetObjectOfType(type, true, true, gameObject.transform.position).gameObject; 
 
         /*for (int iter = 0; manager.m_objectReferences.Count > iter; iter++)
         {
@@ -163,7 +163,7 @@ public class AiMovement : MonoBehaviour {
         }
         else
         {
-            m_agent.destination = m_goal.GetComponent<ObjectReference>().m_position;//.Find("NPCPosition").transform.position;
+            m_agent.destination = m_goal.GetComponent<ObjectReference>().m_object.transform.position; 
             m_state = (int)aiState.goingToDesire;
             animation.Play("Walk");
         }
