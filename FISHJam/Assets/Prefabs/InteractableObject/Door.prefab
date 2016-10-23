@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11436206}
   - 95: {fileID: 9597310}
   - 114: {fileID: 11489482}
+  - 114: {fileID: 11410630}
   m_Layer: 0
   m_Name: Door
   m_TagString: Interactable
@@ -91,9 +92,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115026}
-  m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.9500003, y: 0.5, z: -1.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.600001, y: -0.873, z: -28.056665}
+  m_LocalScale: {x: 3.3333333, y: 5, z: 3.3333333}
   m_Children:
   - {fileID: 471688}
   - {fileID: 427402}
@@ -288,6 +289,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11410630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a117294b2fa7a44cad6f76952882153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_type: 1
+  m_frustration:
+  - 0
+  - 2
+  - 3
+  - 4
+  m_suspicion:
+  - 0
+  - 2
+  - 3
+  - 4
 --- !u!114 &11436206
 MonoBehaviour:
   m_ObjectHideFlags: 1
