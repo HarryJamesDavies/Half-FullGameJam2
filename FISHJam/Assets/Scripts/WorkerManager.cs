@@ -12,6 +12,9 @@ public class WorkerManager : MonoBehaviour {
     private int m_currentWorkerPop = 1;
     public Transform spawnPoint;
 
+    public float m_globalFrustration = 0;
+    public float m_gloablSuspicion = 0;
+
     void Start()
     {
         StartCoroutine(SpawnAllWorkers());
@@ -29,6 +32,15 @@ public class WorkerManager : MonoBehaviour {
         }
 
         m_WorkerList = new List<GameObject>();
+    }
+
+    void Update()
+    {
+        foreach(GameObject _worker in m_WorkerList)
+        {
+            m_globalFrustration += _worker.GetComponent<WorkerTally>().m_totalFrustration;
+            m_gloablSuspicion += _worker.GetComponent<WorkerTally>().m_totalSuspicion;
+        }
     }
 
     public void AddGameObject(GameObject worker)

@@ -6,6 +6,7 @@ public class WorkerScript : MonoBehaviour {
 
     [SerializeField]
     public List<string> m_DesireList;
+    public GameObject m_currentObject = null;
 
     private string m_thirsty;
     private string m_hungry;
@@ -59,11 +60,19 @@ public class WorkerScript : MonoBehaviour {
         m_randomListPosition = Random.Range(0, m_DesireList.Count);
     }
 
-    private void AssignDesireToWorker()
+    public string AssignDesireToWorker()
     {
-        m_currentDesire = m_DesireList[m_randomListPosition];
-        Debug.Log(m_currentDesire);
+       return m_currentDesire = m_DesireList[m_randomListPosition];
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "NPCPosition")
+        {
+            m_currentObject = other.transform.parent.gameObject;
+        }
+    }
+
 
     private void SendWorkerToDesire()
     {
