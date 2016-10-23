@@ -11,6 +11,7 @@ public class WorkerScript : MonoBehaviour {
     private string m_hungry;
     private string m_print;
     private string m_toilet;
+    private string m_desk;
     public string m_currentDesire;
 
     //a random list position
@@ -29,6 +30,7 @@ public class WorkerScript : MonoBehaviour {
         m_hungry = "hungry";
         m_print = "print";
         m_toilet = "toilet";
+        m_desk = "desk";
 
         AddDesireToList();
         GetRandomListPosition();
@@ -49,6 +51,7 @@ public class WorkerScript : MonoBehaviour {
         m_DesireList.Add(m_hungry);
         m_DesireList.Add(m_print);
         m_DesireList.Add(m_toilet);
+        m_DesireList.Add(m_desk);
     }
 
     private void GetRandomListPosition()
