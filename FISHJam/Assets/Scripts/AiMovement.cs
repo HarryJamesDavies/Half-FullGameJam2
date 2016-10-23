@@ -98,27 +98,27 @@ public class AiMovement : MonoBehaviour {
 
         if (m_desire == "thirsty")
         {
-            type = InteractableManager.ObjectType.TABLE;
+            type = InteractableManager.ObjectType.FRIDGE;
             
         }
         else if (m_desire == "hungry")
         {
-            type = InteractableManager.ObjectType.TABLE;
+            type = InteractableManager.ObjectType.FRIDGE;
 
         }
         else if (m_desire == "print")
         {
-            type = InteractableManager.ObjectType.TABLE;
+            type = InteractableManager.ObjectType.FRIDGE;
 
         }
         else if (m_desire == "toilet")
         {
-            type = InteractableManager.ObjectType.TABLE;
+            type = InteractableManager.ObjectType.FRIDGE;
 
         }
         else
         {
-            type = InteractableManager.ObjectType.TABLE;
+            type = InteractableManager.ObjectType.FRIDGE;
         }
 
         _goal = InteractableManager.m_instance.GetObjectOfType(type, true, true, gameObject.transform.position).gameObject; 
@@ -163,7 +163,7 @@ public class AiMovement : MonoBehaviour {
         }
         else
         {
-            m_agent.destination = m_goal.GetComponent<ObjectReference>().m_object.transform.position; 
+            m_agent.destination = m_goal.GetComponent<ObjectReference>().m_position; 
             m_state = (int)aiState.goingToDesire;
             animation.Play("Walk");
         }
