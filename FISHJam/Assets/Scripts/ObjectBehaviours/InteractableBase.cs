@@ -11,6 +11,11 @@ public class InteractableBase : MonoBehaviour
 
     public void SetState(PlayerAbilities.InteractableStates _state)
     {
+        //if(_state == PlayerAbilities.InteractableStates.TOGGLE
+        //    && m_state == PlayerAbilities.InteractableStates.TOGGLE)
+        //{
+        //    _state = PlayerAbilities.InteractableStates.NORMAL;
+        //}
         m_state = _state;
         m_active = true;
     }
