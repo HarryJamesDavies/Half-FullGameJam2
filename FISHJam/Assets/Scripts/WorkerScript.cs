@@ -62,6 +62,7 @@ public class WorkerScript : MonoBehaviour {
 
     public string AssignDesireToWorker()
     {
+        GetRandomListPosition();
        return m_currentDesire = m_DesireList[m_randomListPosition];
     }
 

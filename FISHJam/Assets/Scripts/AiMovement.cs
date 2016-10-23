@@ -208,6 +208,9 @@ public class AiMovement : MonoBehaviour {
     IEnumerator wait()
     {
         yield return new WaitForSeconds(5.0f);
-        m_state = (int)aiState.needsDesire;
+        
+        m_desire = m_desires.AssignDesireToWorker();
+
+        m_state = (int)aiState.needsToMove;
     }
 }
