@@ -11,7 +11,8 @@ public class InteractableManager : MonoBehaviour
         DOOR = 1,
         WATERCOOLER = 2,
         TOILET = 3,
-        PRINTER = 4
+        PRINTER = 4,
+        FRIDGE = 5
     }
 
     public static InteractableManager m_instance = null;
@@ -53,7 +54,7 @@ public class InteractableManager : MonoBehaviour
             {
                 if (objects.transform.GetChild(i).tag == "NPCPosition")
                 {
-                    objectPosition = objects.transform.GetChild(i).transform.localPosition;
+                    objectPosition = objects.transform.GetChild(i).transform.position;
                 }
             }
 

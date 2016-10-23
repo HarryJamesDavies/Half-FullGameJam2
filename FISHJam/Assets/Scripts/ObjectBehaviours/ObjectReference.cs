@@ -34,7 +34,13 @@ public class ObjectReference : MonoBehaviour
 
         if (m_position != m_object.transform.position)
         {
-            m_position = m_object.transform.position;
+            for (int i = 0; i <= transform.childCount - 1; i++)
+            {
+                if (transform.GetChild(i).tag == "NPCPosition")
+                {
+                    m_position = transform.GetChild(i).transform.position;
+                }
+            }
         }
 
         if (m_inUse != m_object.GetComponent<InteractableBase>().m_inUse)
