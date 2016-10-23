@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class AiMovement : MonoBehaviour {
 
    /* enum tempDesireEnum
@@ -21,6 +22,7 @@ public class AiMovement : MonoBehaviour {
     }
 
     public Animator animation;
+    
 
     public GameObject m_goal;
     private GameObject _goal;
@@ -65,13 +67,17 @@ public class AiMovement : MonoBehaviour {
         else if (m_state == (int)aiState.goingToDesire)
         {
             //check to see if arrived yet which is done in OnTriggerEnter
+            Debug.Log("boop");
         }
         else if (m_state == (int)aiState.arrivedAtDesire)
         {
-            wait();
+            //System.Threading.Thread.Sleep(5000);
+            StartCoroutine(wait());
+            //yield return new WaitForSeconds(5.0f);
             //has arrived so change the worker's desires slightly over time
             //once full, set state to needs desire
-            m_state = (int)aiState.needsDesire;
+           
+        
         }
         
     }
@@ -98,7 +104,7 @@ public class AiMovement : MonoBehaviour {
 
         if (m_desire == "thirsty")
         {
-            type = InteractableManager.ObjectType.FRIDGE;
+            type = InteractableManager.ObjectType.WATERCOOLER;
             
         }
         else if (m_desire == "hungry")
@@ -108,17 +114,17 @@ public class AiMovement : MonoBehaviour {
         }
         else if (m_desire == "print")
         {
-            type = InteractableManager.ObjectType.FRIDGE;
+            type = InteractableManager.ObjectType.PRINTER;
 
         }
         else if (m_desire == "toilet")
         {
-            type = InteractableManager.ObjectType.FRIDGE;
+            type = InteractableManager.ObjectType.TOILET;
 
         }
         else
         {
-            type = InteractableManager.ObjectType.FRIDGE;
+            type = InteractableManager.ObjectType.TABLE;
         }
 
         _goal = InteractableManager.m_instance.GetObjectOfType(type, true, true, gameObject.transform.position).gameObject; 
@@ -201,8 +207,7 @@ public class AiMovement : MonoBehaviour {
 
     IEnumerator wait()
     {
-        //print(Time.time);
-        yield return new WaitForSeconds(5);
-        //print(Time.time);
+        yield return new WaitForSeconds(5.0f);
+        m_state = (int)aiState.needsDesire;
     }
 }
