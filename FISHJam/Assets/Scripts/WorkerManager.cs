@@ -10,7 +10,7 @@ public class WorkerManager : MonoBehaviour {
     [SerializeField]
     public List<GameObject> m_WorkerList;
     public GameObject m_Worker;
-    private int m_currentWorkerPop = 1;
+    public int m_currentWorkerPop = 10;
     public Transform spawnPoint;
 
     public float m_globalFrustration = 0;

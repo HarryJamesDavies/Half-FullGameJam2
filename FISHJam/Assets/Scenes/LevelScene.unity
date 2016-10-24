@@ -828,6 +828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_WorkerList: []
   m_Worker: {fileID: 123966, guid: 1f9e937349f4d1c45847b2c14531bfc6, type: 2}
+  m_currentWorkerPop: 10
   spawnPoint: {fileID: 768419291}
   m_globalFrustration: 0
   m_globalSuspicion: 0
