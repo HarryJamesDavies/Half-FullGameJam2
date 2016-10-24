@@ -26,17 +26,10 @@ public class WorkerTally : MonoBehaviour
         IncrementCounter(temp.GetComponent<InteractableBase>().m_type);
         m_totalFrustration = temp.GetComponent<ObjectInfo>().GetFrustration() * m_currentCount;
         m_totalSuspicion = temp.GetComponent<ObjectInfo>().GetSuspicion() * m_currentCount;
-
-        Debug.Log(m_totalFrustration);
-        Debug.Log(m_totalSuspicion);
     }
 
     public void Update()
     {
-        ////test increase of values to check if sliders worked
-        //m_totalFrustration += Time.deltaTime;
-        //m_totalSuspicion += Time.deltaTime * 2;
-
         //constantly update the value of the sliders
         m_frustrationSlider.value = m_totalFrustration;
         m_suspicionSlider.value = m_totalSuspicion;
