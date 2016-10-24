@@ -330,6 +330,7 @@ GameObject:
   - 4: {fileID: 469460}
   - 65: {fileID: 6550966}
   - 54: {fileID: 5415178}
+  - 114: {fileID: 11463010}
   m_Layer: 0
   m_Name: NPCPosition
   m_TagString: NPCPosition
@@ -1317,6 +1318,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8ee35460901964498b870c20577df3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11463010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6458c3e66f3144195c3d216413803d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &13503912

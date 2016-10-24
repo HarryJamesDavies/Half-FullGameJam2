@@ -16,12 +16,26 @@ public class PrinterScript : MonoBehaviour {
 
     void Update()
     {
+        if (!m_toggle)
+        {
+            if (gameObject.GetComponent<InteractableBase>().m_inUse)
+            {
+                m_animator.SetBool("m_triggered", true);
+            }
+            else
+            {
+                m_animator.SetBool("m_triggered", false);
+            }
+        }
+
         if (GetComponent<InteractableBase>().m_active)
         {
-            m_state = GetComponent<InteractableBase>().m_state;
+            ResetBehaviour();
             ChangeBehaviour();
+
             GetComponent<InteractableBase>().m_active = false;
         }
+
     }
 
     void ChangeBehaviour()
@@ -46,54 +60,22 @@ public class PrinterScript : MonoBehaviour {
 
     void NormalBehaviour()
     {
-        if (m_animator.GetBool("m_printerWork"))
-        {
-            m_animator.SetBool("m_printerWork", false);
-        }
-        if (m_animator.GetBool("m_printerNWork"))
-        {
-            m_animator.SetBool("m_printerNWork", false);
-        }
-        if (m_animator.GetBool("m_printerSpit"))
-        {
-            m_animator.SetBool("m_printerSpit", false);
-        }
-        if (!m_animator.GetBool("m_printerNorm"))
-        {
-            m_animator.SetBool("m_printerNorm", true);
-        }
+
 
     }
 
     void ToggleBehaviour()
     {
-        if (m_animator.GetBool("m_printerNWork"))
-        {
-            m_animator.SetBool("m_printerNWork", false);
-        }
-        if (!m_animator.GetBool("m_printerWork"))
-        {
-            m_animator.SetBool("m_printerWork", true);
-        }
-       
+        m_toggle = true;
+
 
     }
 
     void SwapBehaviour()
     {
-        m_animator.SetBool("m_printerSpit", true);
-
-        if (m_animator.GetBool("m_printerNWork"))
+        if (!m_animator.GetBool("m_printerSpit"))
         {
-            m_animator.SetBool("m_printerNWork", false);
-        }
-        if (m_animator.GetBool("m_printerWork"))
-        {
-            m_animator.SetBool("m_printerWork", false);
-        }
-        if (m_animator.GetBool("m_broken"))
-        {
-            m_animator.SetBool("m_broken", false);
+            m_animator.SetBool("m_printerSpit", true);
         }
 
     }
@@ -104,5 +86,18 @@ public class PrinterScript : MonoBehaviour {
         {
             m_animator.SetBool("m_printerNWork", true);
         }
+
+    }
+
+    void ResetBehaviour()
+    {
+        m_state = GetComponent<InteractableBase>().m_state;
+
+        m_animator.SetBool("m_printerWorking", false);
+        m_animator.SetBool("m_printerNWork", false);
+        m_animator.SetBool("m_printerSpit", false);
+        m_animator.SetBool("m_prinerNorm", false);
+
+        m_toggle = false;
     }
 }
