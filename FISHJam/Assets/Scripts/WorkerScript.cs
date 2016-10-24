@@ -18,6 +18,9 @@ public class WorkerScript : MonoBehaviour {
     //a random list position
     private static int m_randomListPosition;
 
+    //WorkerUI variables
+    public GameObject m_workerUI;
+
     void start()
     {
         WorkerManager.worker_instance.AddGameObject(gameObject);
@@ -71,6 +74,21 @@ public class WorkerScript : MonoBehaviour {
         if (other.gameObject.tag == "NPCPosition")
         {
             m_currentObject = other.transform.parent.gameObject;
+        }
+
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("Entered player");
+            m_workerUI.SetActive(true);
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("Exited player");
+            m_workerUI.SetActive(false);
         }
     }
 
