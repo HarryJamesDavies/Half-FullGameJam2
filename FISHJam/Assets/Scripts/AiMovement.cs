@@ -22,8 +22,13 @@ public class AiMovement : MonoBehaviour {
     }
 
     public Animator m_animation;
-    
+    public AudioSource m_audio;
+    public AudioClip m_worker1;
+    public AudioClip m_worker2;
+    public AudioClip m_workerAnnoyed;
+    public AudioClip m_workerRiot;
 
+    public WorkerTally m_workerTally;
     public GameObject m_goal;
     private GameObject _goal;
     public NavMeshAgent m_agent;
@@ -39,6 +44,8 @@ public class AiMovement : MonoBehaviour {
         m_state = (int)aiState.needsDesire;
         m_animation = gameObject.GetComponent<Animator>();
         m_animation.Play("Neutral");
+        m_audio = gameObject.GetComponent<AudioSource>();
+        m_workerTally = gameObject.GetComponent<WorkerTally>();
     }
 
     //main state machine for the AI is done in the update
@@ -119,8 +126,27 @@ public class AiMovement : MonoBehaviour {
             }
             else if (_collider.gameObject.transform.parent.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TABLE && m_desire == "desk")
             {
+                if(m_workerTally.m_totalFrustration > 50)
+                {
+                    m_audio.clip = m_workerAnnoyed;
+                }
+                else
+                {
+                    m_audio.clip = m_worker2;
+                }
+                if (m_workerTally.m_totalFrustration >= 90)
+                {
+                    m_audio.clip = m_workerRiot;
+                }
+                else
+                {
+                    m_audio.clip = m_worker2;
+                }
+                
+
                 m_state = (int)aiState.arrivedAtDesire;
                 m_animation.Play("Work");
+                m_audio.Play();
                 //Debug.Log("Boop");
             }
 
@@ -207,6 +233,8 @@ public class AiMovement : MonoBehaviour {
     //this function starts the worker moving towards the goal
     void moveTowardsGoal()
     {
+        m_audio.clip = m_worker1;
+        m_audio.Play();
         if(m_goal == null)
         {
             //Debug.Log("Boop");
