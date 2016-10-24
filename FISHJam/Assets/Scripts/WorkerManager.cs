@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,7 +14,11 @@ public class WorkerManager : MonoBehaviour {
     public Transform spawnPoint;
 
     public float m_globalFrustration = 0;
-    public float m_gloablSuspicion = 0;
+    public float m_globalSuspicion = 0;
+
+    //global sliders
+    public Slider m_globalFrustrationSlider;
+    public Slider m_globalSuspicionSlider;
 
     void Start()
     {
@@ -39,8 +44,12 @@ public class WorkerManager : MonoBehaviour {
         foreach(GameObject _worker in m_WorkerList)
         {
             m_globalFrustration += _worker.GetComponent<WorkerTally>().m_totalFrustration;
-            m_gloablSuspicion += _worker.GetComponent<WorkerTally>().m_totalSuspicion;
+            m_globalSuspicion += _worker.GetComponent<WorkerTally>().m_totalSuspicion;
         }
+
+        //constantly update global sliders
+        m_globalFrustrationSlider.value = m_globalFrustration;
+        m_globalSuspicionSlider.value = m_globalSuspicion;
     }
 
     public void AddGameObject(GameObject worker)
