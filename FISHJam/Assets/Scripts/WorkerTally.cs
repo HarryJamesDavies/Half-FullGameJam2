@@ -24,8 +24,8 @@ public class WorkerTally : MonoBehaviour
     {
         GameObject temp = gameObject.GetComponent<WorkerScript>().m_currentObject;
         IncrementCounter(temp.GetComponent<InteractableBase>().m_type);
-        m_totalFrustration = temp.GetComponent<ObjectInfo>().GetFrustration() * m_currentCount;
-        m_totalSuspicion = temp.GetComponent<ObjectInfo>().GetSuspicion() * m_currentCount;
+        m_totalFrustration += temp.GetComponent<ObjectInfo>().GetFrustration();
+        m_totalSuspicion += temp.GetComponent<ObjectInfo>().GetSuspicion() * m_currentCount;
     }
 
     public void Update()

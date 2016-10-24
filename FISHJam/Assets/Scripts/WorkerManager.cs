@@ -41,11 +41,14 @@ public class WorkerManager : MonoBehaviour {
 
     void Update()
     {
-        //foreach(GameObject _worker in m_WorkerList)
-        //{
-        //    m_globalFrustration += _worker.GetComponent<WorkerTally>().m_totalFrustration;
-        //    m_globalSuspicion += _worker.GetComponent<WorkerTally>().m_totalSuspicion;
-        //}
+        m_globalFrustration = 0.0f;
+        m_globalSuspicion = 0.0f;
+
+        foreach (GameObject _worker in m_WorkerList)
+        {
+            m_globalFrustration += _worker.GetComponent<WorkerTally>().m_totalFrustration;
+            m_globalSuspicion += _worker.GetComponent<WorkerTally>().m_totalSuspicion;
+        }
 
         //constantly update global sliders
         m_globalFrustrationSlider.value = m_globalFrustration;
