@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class WorkerTally : MonoBehaviour
@@ -15,12 +16,27 @@ public class WorkerTally : MonoBehaviour
 
     private int m_currentCount = 0;
 
+    //WorkerUI slider variables
+    public Slider m_frustrationSlider;
+    public Slider m_suspicionSlider;
+
     public void updateTally()
     {
         GameObject temp = gameObject.GetComponent<WorkerScript>().m_currentObject;
         IncrementCounter(temp.GetComponent<InteractableBase>().m_type);
         m_totalFrustration = temp.GetComponent<ObjectInfo>().GetFrustration() * m_currentCount;
-        m_totalFrustration = temp.GetComponent<ObjectInfo>().GetSuspicion() * m_currentCount;
+        m_totalSuspicion = temp.GetComponent<ObjectInfo>().GetSuspicion() * m_currentCount;
+    }
+
+    public void Update()
+    {
+        //test increase of values to check if sliders worked
+        m_totalFrustration += Time.deltaTime;
+        m_totalSuspicion += Time.deltaTime * 2;
+
+        //constantly update the value of the sliders
+        m_frustrationSlider.value = m_totalFrustration;
+        m_suspicionSlider.value = m_totalSuspicion;
     }
 
     void IncrementCounter(InteractableManager.ObjectType _type)
