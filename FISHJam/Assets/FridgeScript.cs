@@ -7,8 +7,6 @@ public class FridgeScript : MonoBehaviour {
     private Animator m_animator;
     private bool m_toggle = false;
 
-    //public ParticleSystem particles;
-
     void Awake()
     {
         m_animator = GetComponent<Animator>();
@@ -16,12 +14,26 @@ public class FridgeScript : MonoBehaviour {
 
     void Update()
     {
+        if (!m_toggle)
+        {
+            if (gameObject.GetComponent<InteractableBase>().m_inUse)
+            {
+                m_animator.SetBool("m_triggered", true);
+            }
+            else
+            {
+                m_animator.SetBool("m_triggered", false);
+            }
+        }
+
         if (GetComponent<InteractableBase>().m_active)
         {
-            m_state = GetComponent<InteractableBase>().m_state;
+            ResetBehaviour();
             ChangeBehaviour();
+
             GetComponent<InteractableBase>().m_active = false;
         }
+
     }
 
     void ChangeBehaviour()
@@ -46,36 +58,14 @@ public class FridgeScript : MonoBehaviour {
 
     void NormalBehaviour()
     {
-        if (m_animator.GetBool("m_working"))
-        {
-            m_animator.SetBool("m_working", false);
-        }
-        if (m_animator.GetBool("m_nworking"))
-        {
-            m_animator.SetBool("m_nworking", false);
-        }
-        if (m_animator.GetBool("m_swap"))
-        {
-            m_animator.SetBool("m_swap", false);
-        }
+       
 
     }
 
     void ToggleBehaviour()
     {
-        if (!m_animator.GetBool("m_working"))
-        {
-            m_animator.SetBool("m_working", true);
-        }
-        if (!m_animator.GetBool("m_nworking"))
-        {
-            m_animator.SetBool("m_nworking", false);
-        }
-        if (m_animator.GetBool("m_swap"))
-        {
-            m_animator.SetBool("m_swap", false);
-        }
-
+        m_toggle = true;
+       
 
     }
 
@@ -85,27 +75,25 @@ public class FridgeScript : MonoBehaviour {
         {
             m_animator.SetBool("m_swap", true);
         }
-        if (!m_animator.GetBool("m_nworking"))
-        {
-            m_animator.SetBool("m_nworking", false);
-        }
-        if (!m_animator.GetBool("m_working"))
-        {
-            m_animator.SetBool("m_working", false);
-        }
 
     }
 
     void ModifyBehaviour()
     {
-        if (m_animator.GetBool("m_working"))
-        {
-            m_animator.SetBool("m_working", false);
-        }
         if (!m_animator.GetBool("m_nworking"))
         {
             m_animator.SetBool("m_nworking", true);
         }
 
+    }
+
+    void ResetBehaviour()
+    {
+        m_state = GetComponent<InteractableBase>().m_state;
+
+        m_animator.SetBool("m_nworking", false);
+        m_animator.SetBool("m_working", false);
+        m_animator.SetBool("m_swap", false);
+        m_toggle = false;
     }
 }
