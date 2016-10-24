@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ToiletBehaviour : MonoBehaviour {
+public class ToiletBehaviour : MonoBehaviour
+{
 
     private PlayerAbilities.InteractableStates m_state;
     private Animator m_animator;
     //private bool m_toggle = false;
     private GameObject particle;
+    private bool m_toggle = false;
+
+
 
     //public ParticleSystem particles;
 
     void Awake()
     {
         m_animator = GetComponent<Animator>();
+
         for (int i = 0; i <= transform.childCount - 1; i++)
         {
             if (transform.GetChild(i).name == "WaterParticleSystem")
@@ -20,17 +25,30 @@ public class ToiletBehaviour : MonoBehaviour {
                 particle = transform.GetChild(i).gameObject;
             }
         }
-
     }
 
     void Update()
     {
+        if (!m_toggle)
+        {
+            if (gameObject.GetComponent<InteractableBase>().m_inUse)
+            {
+                m_animator.SetBool("m_triggered", true);
+            }
+            else
+            {
+                m_animator.SetBool("m_triggered", false);
+            }
+        }
+
         if (GetComponent<InteractableBase>().m_active)
         {
-            m_state = GetComponent<InteractableBase>().m_state;
+            ResetBehaviour();
             ChangeBehaviour();
+
             GetComponent<InteractableBase>().m_active = false;
         }
+
     }
 
     void ChangeBehaviour()
@@ -55,54 +73,22 @@ public class ToiletBehaviour : MonoBehaviour {
 
     void NormalBehaviour()
     {
-        if (m_animator.GetBool("m_using"))
-        {
-            m_animator.SetBool("m_using", false);
-        }
-        if (m_animator.GetBool("m_broken"))
-        {
-            m_animator.SetBool("m_broken", false);
-        }
-        if (m_animator.GetBool("m_blocked"))
-        {
-            m_animator.SetBool("m_blocked", false);
-        }
-        particle.SetActive(false);
 
     }
 
     void ToggleBehaviour()
     {
-        if (!m_animator.GetBool("m_using"))
-        {
-            m_animator.SetBool("m_using", true);
-        }
-        if (m_animator.GetBool("m_broken"))
-        {
-            m_animator.SetBool("m_broken", false);
-        }
-        if (m_animator.GetBool("m_blocked"))
-        {
-            m_animator.SetBool("m_blocked", false);
-        }
+        m_toggle = true;
         particle.SetActive(false);
-
 
     }
 
     void SwapBehaviour()
     {
-        if (m_animator.GetBool("m_using"))
+        if (!m_animator.GetBool("m_broken"))
         {
-            m_animator.SetBool("m_using", false);
-        }
-        if (m_animator.GetBool("m_broken"))
-        {
-            m_animator.SetBool("m_broken", false);
-        }
-        if (!m_animator.GetBool("m_blocked"))
-        {
-            m_animator.SetBool("m_blocked", true);
+            m_animator.SetBool("m_broken", true);
+            particle.SetActive(true);
         }
         particle.SetActive(false);
 
@@ -110,18 +96,23 @@ public class ToiletBehaviour : MonoBehaviour {
 
     void ModifyBehaviour()
     {
-        if (m_animator.GetBool("m_using"))
-        {
-            m_animator.SetBool("m_using", false);
-        }
-        if (!m_animator.GetBool("m_broken"))
-        {
-            m_animator.SetBool("m_broken", true);
-        }
         if (!m_animator.GetBool("m_blocked"))
         {
-            m_animator.SetBool("m_blocked", false);
+            m_animator.SetBool("m_blocked", true);
         }
-        particle.SetActive(true);
+        particle.SetActive(false);
+    }
+
+    void ResetBehaviour()
+    {
+        m_state = GetComponent<InteractableBase>().m_state;
+
+        m_animator.SetBool("m_blocked", false);
+        m_animator.SetBool("m_broken", false);
+        m_animator.SetBool("m_using", false);
+
+        particle.SetActive(false);
+
+        m_toggle = false;
     }
 }
