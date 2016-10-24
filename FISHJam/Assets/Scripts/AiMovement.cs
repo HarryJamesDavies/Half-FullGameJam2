@@ -21,7 +21,7 @@ public class AiMovement : MonoBehaviour {
         arrivedAtDesire
     }
 
-    public Animator animation;
+    public Animator m_animation;
     
 
     public GameObject m_goal;
@@ -30,14 +30,15 @@ public class AiMovement : MonoBehaviour {
     public WorkerScript m_desires;
     public string m_desire;
     public int m_state;
+    public int m_moveCounter;
 
     void Start()
     {
         m_agent = GetComponent<NavMeshAgent>();
         m_desires = gameObject.GetComponent<WorkerScript>();
         m_state = (int)aiState.needsDesire;
-        animation = gameObject.GetComponent<Animator>();
-        animation.Play("Neutral");
+        m_animation = gameObject.GetComponent<Animator>();
+        m_animation.Play("Neutral");
     }
 
     //main state machine for the AI is done in the update
@@ -59,7 +60,7 @@ public class AiMovement : MonoBehaviour {
         }
         else if(m_state == (int)aiState.needsToMove)
         {
-            
+            m_moveCounter = 0;
             setGoal();
             //m_state = (int)aiState.goingToDesire;
             moveTowardsGoal();
@@ -67,7 +68,13 @@ public class AiMovement : MonoBehaviour {
         else if (m_state == (int)aiState.goingToDesire)
         {
             //check to see if arrived yet which is done in OnTriggerEnter
-            Debug.Log("boop");
+            //Debug.Log("boop");
+            if(m_moveCounter == 2000)
+            {
+                moveTowardsGoal();
+                m_moveCounter = 0;
+            }
+            m_moveCounter++;
         }
         else if (m_state == (int)aiState.arrivedAtDesire)
         {
@@ -82,12 +89,45 @@ public class AiMovement : MonoBehaviour {
         
     }
 
-    void OnTriggerEnter(Collider _collider)
+    void OnTriggerStay(Collider _collider)
     {
         if((_collider.tag == "NPCPosition") && (m_state == (int)aiState.goingToDesire))
         {
-            m_state = (int)aiState.arrivedAtDesire;
-            animation.Play("Work");
+            if (_collider.gameObject.transform.parent.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TOILET && m_desire == "toilet")
+            {
+                m_state = (int)aiState.arrivedAtDesire;
+                m_animation.Play("Work");
+                //Debug.Log("Boop");
+            }
+            else if (_collider.gameObject.transform.parent.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.WATERCOOLER && m_desire == "thirsty")
+            {
+                m_state = (int)aiState.arrivedAtDesire;
+                m_animation.Play("Work");
+                //Debug.Log("Boop");
+            }
+            else if (_collider.gameObject.transform.parent.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.PRINTER && m_desire == "print")
+            {
+                m_state = (int)aiState.arrivedAtDesire;
+                m_animation.Play("Work");
+                //Debug.Log("Boop");
+            }
+            else if (_collider.gameObject.transform.parent.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.FRIDGE && m_desire == "hungry")
+            {
+                m_state = (int)aiState.arrivedAtDesire;
+                m_animation.Play("Work");
+                //Debug.Log("Boop");
+            }
+            else if (_collider.gameObject.transform.parent.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TABLE && m_desire == "desk")
+            {
+                m_state = (int)aiState.arrivedAtDesire;
+                m_animation.Play("Work");
+                //Debug.Log("Boop");
+            }
+
+            else
+            {
+
+            }
         }
         else
         {
@@ -121,6 +161,10 @@ public class AiMovement : MonoBehaviour {
         {
             type = InteractableManager.ObjectType.TOILET;
 
+        }
+        else if(m_desire == "desk")
+        {
+            type = InteractableManager.ObjectType.TABLE;
         }
         else
         {
@@ -165,13 +209,14 @@ public class AiMovement : MonoBehaviour {
     {
         if(m_goal == null)
         {
+            //Debug.Log("Boop");
             m_state = (int)aiState.needsToMove;
         }
         else
         {
             m_agent.destination = m_goal.GetComponent<ObjectReference>().m_position; 
             m_state = (int)aiState.goingToDesire;
-            animation.Play("Walk");
+            m_animation.Play("Walk");
         }
         
     }
