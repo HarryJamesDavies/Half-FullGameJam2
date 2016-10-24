@@ -74,6 +74,7 @@ public class WorkerScript : MonoBehaviour {
         if (other.gameObject.tag == "NPCPosition")
         {
             m_currentObject = other.transform.parent.gameObject;
+            GetComponent<WorkerTally>().UpdateTally();
         }
 
         if (other.gameObject.tag == "Player")
