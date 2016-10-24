@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
         m_screenWidth = Screen.width;
         m_screenHeight = Screen.height;
         m_speed = 0.1f;
-        m_offset = new Vector3(m_screenWidth / 200, 0.0f, m_screenHeight / 200);
+        m_offset = new Vector3(m_screenWidth / 20, 0.0f, m_screenHeight / 20);
     }
 
     void LateUpdate()
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             //apply player position to mouse position and move player with camera
-            transform.position = new Vector3(Input.mousePosition.x / 100, 0.0f, Input.mousePosition.y / 100);
+            transform.position = new Vector3(Input.mousePosition.x / 10, 0.0f, Input.mousePosition.y / 10);
             transform.position -= m_offset;
             transform.position += new Vector3(Camera.main.transform.position.x, 0.0f, Camera.main.transform.position.z);
         }

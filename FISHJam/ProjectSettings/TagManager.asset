@@ -9,6 +9,7 @@ TagManager:
   - WorkerSpawn
   - Screen
   - Particle
+  - NPC
   layers:
   - Default
   - TransparentFX

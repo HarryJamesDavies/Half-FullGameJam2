@@ -15,7 +15,7 @@ GameObject:
   - 54: {fileID: 5499168}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ Transform:
   m_GameObject: {fileID: 103432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 461532}
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ Light:
   m_Type: 0
   m_Color: {r: 0, g: 0.46206903, b: 1, a: 1}
   m_Intensity: 8
-  m_Range: 10
+  m_Range: 100
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -139,7 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed46798d90940404687d8cebf1c7ce8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentInteractable: {fileID: 0}
+  m_currentInteractable: {fileID: 115026, guid: b4d24a170287568458982bedc951c655,
+    type: 2}
   m_state: 0
   m_abilityText: {fileID: 0}
   m_objectState: {fileID: 0}

@@ -5,7 +5,7 @@ public class ToiletBehaviour : MonoBehaviour {
 
     private PlayerAbilities.InteractableStates m_state;
     private Animator m_animator;
-    private bool m_toggle = false;
+    //private bool m_toggle = false;
     private GameObject particle;
 
     //public ParticleSystem particles;

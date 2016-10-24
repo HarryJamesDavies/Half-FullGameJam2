@@ -5,11 +5,17 @@ public class NPCDetector : MonoBehaviour {
 
 	void OnTriggerEnter(Collider _other)
     {
-        GetComponentInParent<InteractableBase>().m_inUse = true;
+        if (_other.gameObject.tag == "NPC")
+        {
+            GetComponentInParent<InteractableBase>().m_inUse = true;
+        }
     }
 
     void OnTriggerExit(Collider _other)
     {
-        GetComponentInParent<InteractableBase>().m_inUse = false;
+        if (_other.gameObject.tag == "NPC")
+        {
+            GetComponentInParent<InteractableBase>().m_inUse = false;
+        }
     }
 }
