@@ -3,32 +3,6 @@ using System.Collections;
 
 public class SceneManager : MonoBehaviour {
 
-    //functions for all menu button presses
-    public void MainMenuClick()
-    {
-        Application.LoadLevel(0);
-    }
-
-	public void PlayClick()
-    {
-        Application.LoadLevel(1);
-    }
-
-    public void InstructionsClick()
-    {
-        Application.LoadLevel(2);
-    }
-
-    public void ControlsClick()
-    {
-        Application.LoadLevel(3);
-    }
-
-    public void QuitClick()
-    {
-        Application.Quit();
-    }
-
     void Update()
     {
         //quit and menu buttons switch statement
@@ -112,6 +86,7 @@ public class SceneManager : MonoBehaviour {
                     {
                         if (Input.GetButtonDown("Start"))
                         {
+                            GameManager.m_gameManager.ResetGame();
                             Application.LoadLevel(0);
                             break;
                         }
@@ -120,6 +95,7 @@ public class SceneManager : MonoBehaviour {
                     {
                         if (Input.GetButtonDown("TouchPad"))
                         {
+                            GameManager.m_gameManager.ResetGame();
                             Application.LoadLevel(0);
                             break;
                         }
@@ -152,6 +128,7 @@ public class SceneManager : MonoBehaviour {
 
                         if (Input.GetButtonDown("Start"))
                         {
+                            GameManager.m_gameManager.ResetGame();
                             Application.LoadLevel(0);
                             break;
                         }
@@ -172,6 +149,7 @@ public class SceneManager : MonoBehaviour {
 
                         if (Input.GetButtonDown("TouchPad"))
                         {
+                            GameManager.m_gameManager.ResetGame();
                             Application.LoadLevel(0);
                             break;
                         }
@@ -198,6 +176,7 @@ public class SceneManager : MonoBehaviour {
 
                         if (Input.GetButtonDown("Start"))
                         {
+                            GameManager.m_gameManager.ResetGame();
                             Application.LoadLevel(0);
                             break;
                         }
@@ -212,6 +191,7 @@ public class SceneManager : MonoBehaviour {
 
                         if (Input.GetButtonDown("TouchPad"))
                         {
+                            GameManager.m_gameManager.ResetGame();
                             Application.LoadLevel(0);
                             break;
                         }
@@ -232,6 +212,7 @@ public class SceneManager : MonoBehaviour {
                     {
                         if (Input.GetButtonDown("B"))
                         {
+                            GameManager.m_gameManager.ResetGame();
                             Application.LoadLevel(0);
                             break;
                         }
@@ -246,6 +227,7 @@ public class SceneManager : MonoBehaviour {
                     {
                         if (Input.GetButtonDown("Circle"))
                         {
+                            GameManager.m_gameManager.ResetGame();
                             Application.LoadLevel(0);
                             break;
                         }
@@ -261,5 +243,32 @@ public class SceneManager : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+    //functions for all menu button presses
+    public void MainMenuClick()
+    {
+        GameManager.m_gameManager.ResetGame();
+        Application.LoadLevel(0);
+    }
+
+    public void PlayClick()
+    {
+        Application.LoadLevel(1);
+    }
+
+    public void InstructionsClick()
+    {
+        Application.LoadLevel(2);
+    }
+
+    public void ControlsClick()
+    {
+        Application.LoadLevel(3);
+    }
+
+    public void QuitClick()
+    {
+        Application.Quit();
     }
 }

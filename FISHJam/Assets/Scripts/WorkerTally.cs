@@ -31,8 +31,8 @@ public class WorkerTally : MonoBehaviour
     public void Update()
     {
         //test increase of values to check if sliders worked
-        m_totalFrustration += Time.deltaTime;
-        m_totalSuspicion += Time.deltaTime * 2;
+        m_totalFrustration += Time.deltaTime * 2;
+        m_totalSuspicion += Time.deltaTime;
 
         //constantly update the value of the sliders
         m_frustrationSlider.value = m_totalFrustration;

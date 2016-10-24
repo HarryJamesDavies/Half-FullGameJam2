@@ -423,12 +423,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 264469736}
---- !u!114 &274599469 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11450456, guid: f69b706b6268d644080bf3c9d2088546,
-    type: 2}
-  m_PrefabInternal: {fileID: 1143918914}
-  m_Script: {fileID: 11500000, guid: ebb10ad9503139648929eb26e4661649, type: 3}
 --- !u!1 &309189802
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +944,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274599469}
+      - m_Target: {fileID: 11450456, guid: f69b706b6268d644080bf3c9d2088546, type: 2}
         m_MethodName: PlayClick
         m_Mode: 1
         m_Arguments:
@@ -1073,7 +1067,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274599469}
+      - m_Target: {fileID: 11450456, guid: f69b706b6268d644080bf3c9d2088546, type: 2}
         m_MethodName: InstructionsClick
         m_Mode: 1
         m_Arguments:
@@ -1223,6 +1217,10 @@ Prefab:
     - target: {fileID: 481822, guid: f69b706b6268d644080bf3c9d2088546, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 188424, guid: f69b706b6268d644080bf3c9d2088546, type: 2}
+      propertyPath: m_TagString
+      value: GameController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f69b706b6268d644080bf3c9d2088546, type: 2}
@@ -1516,7 +1514,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274599469}
+      - m_Target: {fileID: 11450456, guid: f69b706b6268d644080bf3c9d2088546, type: 2}
         m_MethodName: ControlsClick
         m_Mode: 1
         m_Arguments:
@@ -1859,7 +1857,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274599469}
+      - m_Target: {fileID: 11450456, guid: f69b706b6268d644080bf3c9d2088546, type: 2}
         m_MethodName: QuitClick
         m_Mode: 1
         m_Arguments:

@@ -51,6 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2148fd8f0b6fd458f93fd2b5799b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_useController: 0
+  m_controllerType: 
+  m_endgameTitle: {fileID: 0}
+  m_frustrationValue: {fileID: 0}
+  m_suspicionValue: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

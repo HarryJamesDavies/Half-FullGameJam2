@@ -1406,7 +1406,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11450456, guid: f69b706b6268d644080bf3c9d2088546, type: 2}
-        m_MethodName: PlayClick
+        m_MethodName: ControlsClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
