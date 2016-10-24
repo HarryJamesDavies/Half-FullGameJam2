@@ -5,7 +5,7 @@ public class NPCDetector : MonoBehaviour {
 
 	void OnTriggerEnter(Collider _other)
     {
-        if (_other.gameObject.tag == "Player" || _other.gameObject.tag == "NPC")
+        if (_other.gameObject.tag == "NPC")
         {
             GetComponentInParent<InteractableBase>().m_inUse = true;
         }
@@ -13,7 +13,7 @@ public class NPCDetector : MonoBehaviour {
 
     void OnTriggerExit(Collider _other)
     {
-        if (_other.gameObject.tag == "Player" || _other.gameObject.tag == "NPC")
+        if (_other.gameObject.tag == "NPC")
         {
             GetComponentInParent<InteractableBase>().m_inUse = false;
         }

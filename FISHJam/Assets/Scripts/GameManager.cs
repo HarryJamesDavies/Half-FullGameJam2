@@ -51,8 +51,8 @@ public class GameManager : MonoBehaviour {
         {
             if (!m_endgame)
             {
-                if (WorkerManager.worker_instance.m_globalFrustration > 800.0f &&
-                    WorkerManager.worker_instance.m_globalSuspicion < 700.0f)
+                if (WorkerManager.worker_instance.m_globalFrustration > 80.0f &&
+                    WorkerManager.worker_instance.m_globalSuspicion < 70.0f)
                 {
                     m_loseBool = false;
                     m_winBool = true;
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
                     Application.LoadLevel(4);
                 }
 
-                if (WorkerManager.worker_instance.m_globalSuspicion > 700.0f)
+                if (WorkerManager.worker_instance.m_globalSuspicion > 70.0f)
                 {
                     m_loseBool = true;
                     m_winBool = false;
