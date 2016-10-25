@@ -7,6 +7,7 @@ public class DoorBehaviour : MonoBehaviour
     private PlayerAbilities.InteractableStates m_state;
     private Animator m_animator;
     private bool m_open = false;
+    private bool m_toggle = false;
 
     void Awake()
     {
@@ -15,6 +16,21 @@ public class DoorBehaviour : MonoBehaviour
 
     void Update()
     {
+        if (!m_toggle)
+        {
+            if (gameObject.GetComponent<InteractableBase>().m_inUse)
+            {
+                m_animator.SetBool("m_triggered", true);
+                m_animator.SetBool("m_open", true);
+            }
+            else
+            {
+                m_animator.SetBool("m_triggered", false);
+                m_animator.SetBool("m_open", false);
+            }
+        }
+
+
         if (GetComponent<InteractableBase>().m_active)
         {
             m_state = GetComponent<InteractableBase>().m_state;
@@ -55,13 +71,11 @@ public class DoorBehaviour : MonoBehaviour
 
     void ToggleBehaviour()
     {
-        if (m_animator.GetBool("m_open"))
+        if (!m_toggle)
         {
-            m_animator.SetBool("m_open", false);
-        }
-        else
-        {
-            m_animator.SetBool("m_open", true);
+            ResetBehaviour();
+            m_toggle = true;
+            m_animator.SetBool("m_triggered", false);
         }
     }
 
@@ -75,33 +89,41 @@ public class DoorBehaviour : MonoBehaviour
         m_animator.speed = 0.1f;
     }
 
-    void OnTriggerEnter(Collider _collider)
+    void ResetBehaviour()
     {
-        if (m_state != PlayerAbilities.InteractableStates.TOGGLE)
-        {
-            if (m_state != PlayerAbilities.InteractableStates.SWAP)
-            {
-                m_animator.SetBool("m_open", true);
-            }
-            else
-            {
-                m_animator.SetBool("m_open", false);
-            }
-        }
+        m_state = GetComponent<InteractableBase>().m_state;
+        m_animator.SetBool("m_open", false);
+        m_animator.SetBool("m_triggered", false);
+        m_toggle = false;
     }
 
-    void OnTriggerExit(Collider _collider)
-    {
-        if (m_state != PlayerAbilities.InteractableStates.TOGGLE)
-        {
-            if (m_state != PlayerAbilities.InteractableStates.SWAP)
-            {
-                m_animator.SetBool("m_open", false);
-            }
-            else
-            {
-                m_animator.SetBool("m_open", true);
-            }
-        }
-    }
+    //void OnTriggerEnter(Collider _collider)
+    //{
+    //    if (m_state != PlayerAbilities.InteractableStates.TOGGLE)
+    //    {
+    //        if (m_state != PlayerAbilities.InteractableStates.SWAP)
+    //        {
+    //            m_animator.SetBool("m_open", true);
+    //        }
+    //        else
+    //        {
+    //            m_animator.SetBool("m_open", false);
+    //        }
+    //    }
+    //}
+
+    //void OnTriggerExit(Collider _collider)
+    //{
+    //    if (m_state != PlayerAbilities.InteractableStates.TOGGLE)
+    //    {
+    //        if (m_state != PlayerAbilities.InteractableStates.SWAP)
+    //        {
+    //            m_animator.SetBool("m_open", false);
+    //        }
+    //        else
+    //        {
+    //            m_animator.SetBool("m_open", true);
+    //        }
+    //    }
+    //}
 }
