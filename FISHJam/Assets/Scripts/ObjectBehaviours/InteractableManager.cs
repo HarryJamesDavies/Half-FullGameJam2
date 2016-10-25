@@ -19,6 +19,8 @@ public class InteractableManager : MonoBehaviour
     public List<Transform> m_objectReferences = new List<Transform>();
     public Transform m_referenceHolder;
 
+    public Transform[] referenceOfType;
+
     // Use this for initialization
     void Awake()
     {
@@ -40,6 +42,11 @@ public class InteractableManager : MonoBehaviour
         foreach (Transform reference in m_objectReferences)
         {
             reference.GetComponent<ObjectReference>().UpdateObjectReference();
+        }
+
+        for (int i = referenceOfType.Length - 1; i>=0;i++)
+        {
+            Destroy(referenceOfType[i].gameObject);
         }
     }
 
@@ -75,54 +82,56 @@ public class InteractableManager : MonoBehaviour
     public ObjectReference GetObjectOfType(ObjectType _type, bool _notInUse, bool _getClosest, Vector3 _NPCPosition)
     {
         Transform objectReference = null;
-        List<Transform> referenceOfType = new List<Transform>();
+        //List<Transform> referenceOfType = new List<Transform>();
 
         foreach (Transform reference in m_objectReferences)
         {
-            if (reference.gameObject.GetComponent<ObjectReference>().m_type == _type)
+            if (reference.gameObject.GetComponent<ObjectReference>().m_type == _type
+                && !reference.gameObject.GetComponent<ObjectReference>().m_inUse)
             {
-                referenceOfType.Add(reference);
+                reference.gameObject.GetComponent<ObjectReference>().m_inUse = true;
+                return reference.gameObject.GetComponent<ObjectReference>();
             }
         }
 
-        if (_notInUse)
-        {
-            foreach (Transform reference in referenceOfType)
-            {
-                if (reference.gameObject.GetComponent<ObjectReference>().m_inUse)
-                {
-                    referenceOfType.Remove(reference);
-                }
-            }
-        }
+        //if (_notInUse)
+        //{
+        //    foreach (Transform reference in referenceOfType)
+        //    {
+        //        if (reference.gameObject.GetComponent<ObjectReference>().m_inUse)
+        //        {
+        //            referenceOfType.Remove(reference);
+        //        }
+        //    }
+        //}
 
-        if (_getClosest)
-        {
-            float distance = 1000.0f;
-            foreach (Transform reference in referenceOfType)
-            {
-                if (Vector3.Distance(_NPCPosition,
-                    reference.gameObject.GetComponent<ObjectReference>().m_position) <= distance)
-                {
-                    distance = Vector3.Distance(_NPCPosition,
-                        reference.gameObject.GetComponent<ObjectReference>().m_position);
-                    objectReference = reference;
-                }
-            }
-        }
+        //if (_getClosest)
+        //{
+        //    float distance = 1000.0f;
+        //    foreach (Transform reference in referenceOfType)
+        //    {
+        //        if (Vector3.Distance(_NPCPosition,
+        //            reference.gameObject.GetComponent<ObjectReference>().m_position) <= distance)
+        //        {
+        //            distance = Vector3.Distance(_NPCPosition,
+        //                reference.gameObject.GetComponent<ObjectReference>().m_position);
+        //            objectReference = reference;
+        //        }
+        //    }
+        //}
 
-        if (objectReference == null)
-        {
-            objectReference = referenceOfType[0]; //BREAKS HERE
-        }
+        //if (objectReference == null)
+        //{
+        //    objectReference = referenceOfType[0]; //BREAKS HERE
+        //}
 
-        foreach (Transform reference in referenceOfType)
-        {
-            if(objectReference != reference)
-            {
-                Destroy(reference.gameObject);
-            }
-        }
+        //foreach (Transform reference in referenceOfType)
+        //{
+        //    if(objectReference != reference)
+        //    {
+        //        Destroy(reference.gameObject);
+        //    }
+        //}
 
         return objectReference.gameObject.GetComponent<ObjectReference>();
     }
