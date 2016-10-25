@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour {
 
     float m_zoomFactor = 0.3f;
-    float m_movementFactor = 3.0f;
+    float m_movementFactor = 2.0f;
     public float m_zoomInFactor = 2.0f;
     public float m_zoomOutFactor = 8.0f;
 
