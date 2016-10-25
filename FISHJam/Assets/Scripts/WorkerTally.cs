@@ -20,6 +20,15 @@ public class WorkerTally : MonoBehaviour
     public Slider m_frustrationSlider;
     public Slider m_suspicionSlider;
 
+    public ParticleSystem m_annoyedParticles;
+
+    void Awake()
+    {
+        m_annoyedParticles = gameObject.GetComponent<ParticleSystem>();
+        m_annoyedParticles.Stop();
+
+    }
+
     public void UpdateTally()
     {
         GameObject temp = gameObject.GetComponent<WorkerScript>().m_currentObject;
@@ -33,6 +42,7 @@ public class WorkerTally : MonoBehaviour
         //constantly update the value of the sliders
         m_frustrationSlider.value = m_totalFrustration;
         m_suspicionSlider.value = m_totalSuspicion;
+        particleChange();
     }
 
     void IncrementCounter(InteractableManager.ObjectType _type)
@@ -80,6 +90,51 @@ public class WorkerTally : MonoBehaviour
                     m_currentCount = 0;
                     break;
                 }
+        }
+    }
+
+    //this function deals with the change of the particle effects
+    void particleChange()
+    {
+        if(m_totalFrustration > 49)
+        {
+            if(m_annoyedParticles.isPlaying == false)
+            {
+                m_annoyedParticles.Play();
+                //Debug.Log("PlayParticles");
+            }
+        }
+
+        if(m_totalFrustration >= 60)
+        {
+            if (m_annoyedParticles.emissionRate < 30)
+            {
+                m_annoyedParticles.emissionRate = 40;
+            }
+        }
+
+        if (m_totalFrustration >= 70)
+        {
+            if (m_annoyedParticles.emissionRate < 50)
+            {
+                m_annoyedParticles.emissionRate = 80;
+            }
+        }
+
+        if (m_totalFrustration >= 80)
+        {
+            if (m_annoyedParticles.emissionRate < 80)
+            {
+                m_annoyedParticles.emissionRate = 120;
+            }
+        }
+
+        if (m_totalFrustration >= 95)
+        {
+            if (m_annoyedParticles.emissionRate < 100)
+            {
+                m_annoyedParticles.emissionRate = 140;
+            }
         }
     }
 }
