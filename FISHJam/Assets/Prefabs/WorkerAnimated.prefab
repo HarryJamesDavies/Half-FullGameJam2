@@ -552,7 +552,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -779,9 +779,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_animation: {fileID: 0}
   m_audio: {fileID: 0}
-  m_worker1: {fileID: 8300000, guid: 455018be3b4589942b0e85c6c298e158, type: 3}
-  m_worker2: {fileID: 8300000, guid: d34ba951098094a41847bbc7beccc5f4, type: 3}
-  m_workerAnnoyed: {fileID: 8300000, guid: 2a900070f200a204096f65346a478b7e, type: 3}
+  m_worker1: {fileID: 8300000, guid: 76de753673b4b5442b0c754f9181d5e6, type: 3}
+  m_worker2: {fileID: 8300000, guid: b4726134a56ac2741a20cdd42a714a15, type: 3}
+  m_workerAnnoyed: {fileID: 8300000, guid: 4862bca5939135c4e8fa2953b73d8cf6, type: 3}
   m_workerRiot: {fileID: 8300000, guid: aa6f8ee3fc7bfc54ca6530b64801d0dc, type: 3}
   m_workerTally: {fileID: 0}
   m_goal: {fileID: 0}

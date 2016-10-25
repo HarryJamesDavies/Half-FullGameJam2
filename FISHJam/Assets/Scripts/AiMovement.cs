@@ -100,6 +100,24 @@ public class AiMovement : MonoBehaviour {
     {
         if((_collider.tag == "NPCPosition") && (m_state == (int)aiState.goingToDesire))
         {
+
+            if (m_workerTally.m_totalFrustration > 50)
+            {
+                m_audio.clip = m_workerAnnoyed;
+            }
+            else
+            {
+                m_audio.clip = m_worker2;
+            }
+            if (m_workerTally.m_totalFrustration >= 90)
+            {
+                m_audio.clip = m_workerRiot;
+            }
+            else
+            {
+                m_audio.clip = m_worker2;
+            }
+
             if (_collider.gameObject.transform.parent.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TOILET && m_desire == "toilet")
             {
                 m_state = (int)aiState.arrivedAtDesire;
@@ -126,23 +144,6 @@ public class AiMovement : MonoBehaviour {
             }
             else if (_collider.gameObject.transform.parent.GetComponent<InteractableBase>().m_type == InteractableManager.ObjectType.TABLE && m_desire == "desk")
             {
-                if(m_workerTally.m_totalFrustration > 50)
-                {
-                    m_audio.clip = m_workerAnnoyed;
-                }
-                else
-                {
-                    m_audio.clip = m_worker2;
-                }
-                if (m_workerTally.m_totalFrustration >= 90)
-                {
-                    m_audio.clip = m_workerRiot;
-                }
-                else
-                {
-                    m_audio.clip = m_worker2;
-                }
-                
 
                 m_state = (int)aiState.arrivedAtDesire;
                 m_animation.Play("Work");
