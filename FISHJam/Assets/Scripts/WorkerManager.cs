@@ -48,6 +48,7 @@ public class WorkerManager : MonoBehaviour {
         {
             m_globalFrustration += _worker.GetComponent<WorkerTally>().m_totalFrustration;
             m_globalSuspicion += _worker.GetComponent<WorkerTally>().m_totalSuspicion;
+            _worker.GetComponent<AiMovement>().CheckGoal();
         }
 
         //constantly update global sliders

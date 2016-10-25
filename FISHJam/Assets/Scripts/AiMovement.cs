@@ -96,6 +96,21 @@ public class AiMovement : MonoBehaviour {
         
     }
 
+    public void CheckGoal()
+    {
+        if (m_goal)
+        {
+            if (!m_goal.GetComponent<ObjectReference>().m_tagged)
+            {
+                m_goal.GetComponent<ObjectReference>().m_tagged = true;
+            }
+            else
+            {
+                m_state = 1;
+            }
+        }
+    }
+
     void OnTriggerStay(Collider _collider)
     {
         if((_collider.tag == "NPCPosition") && (m_state == (int)aiState.goingToDesire))
