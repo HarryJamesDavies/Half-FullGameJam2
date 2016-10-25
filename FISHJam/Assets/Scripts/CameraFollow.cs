@@ -88,22 +88,22 @@ public class CameraFollow : MonoBehaviour
         }
         else
         {
-            if (Input.mousePosition.x > 0.0f)
+            if (Input.mousePosition.x > 100.0f)
             {
                 transform.position = new Vector3(transform.position.x + m_movementFactor, transform.position.y, transform.position.z);
             }
 
-            if (Input.mousePosition.x < Screen.width - 10.0f)
+            if (Input.mousePosition.x < Screen.width - 100.0f)
             {
                 transform.position = new Vector3(transform.position.x - m_movementFactor, transform.position.y, transform.position.z);
             }
 
-            if (Input.mousePosition.y > 0.0f)
+            if (Input.mousePosition.y > 100.0f)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + m_movementFactor);
             }
 
-            if (Input.mousePosition.y < Screen.height)
+            if (Input.mousePosition.y < Screen.height - 100.0f)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - m_movementFactor);
             }
