@@ -198,7 +198,7 @@ public class AiMovement : MonoBehaviour {
             type = InteractableManager.ObjectType.TABLE;
         }
 
-        _goal = InteractableManager.m_instance.GetObjectOfType(type, true, true, gameObject.transform.position).gameObject; 
+        _goal = InteractableManager.m_instance.GetObjectOfType(type, true, false, gameObject.transform.position).gameObject; 
 
         /*for (int iter = 0; manager.m_objectReferences.Count > iter; iter++)
         {
@@ -243,7 +243,8 @@ public class AiMovement : MonoBehaviour {
         }
         else
         {
-            m_agent.destination = m_goal.GetComponent<ObjectReference>().m_position; 
+            m_agent.destination = m_goal.GetComponent<ObjectReference>().m_position;
+            m_goal.GetComponent<ObjectReference>().m_inUse = true;
             m_state = (int)aiState.goingToDesire;
             m_animation.Play("Walk");
         }
