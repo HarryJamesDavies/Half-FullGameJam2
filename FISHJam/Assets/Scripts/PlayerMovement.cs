@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
         //initialise variables
         m_screenWidth = Screen.width;
         m_screenHeight = Screen.height;
-        m_speed = 0.1f;
+        m_speed = 1.0f;
         m_offset = new Vector3(m_screenWidth / 20, 0.0f, m_screenHeight / 20);
     }
 
@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
         {
             //constantly apply joystick axis input to player position
             transform.position += new Vector3(Input.GetAxis("LeftJoystickX") * m_speed, 0.0f, -Input.GetAxis("LeftJoystickY") * m_speed);
-            //transform.position += new Vector3(Camera.main.transform.position.x, 0.0f, Camera.main.transform.position.z);
         }
         else
         {
