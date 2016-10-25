@@ -109,6 +109,12 @@ public class SceneManager : MonoBehaviour {
                     break;
                 }
 
+                if (Input.GetKeyDown(KeyCode.Backspace))
+                {
+                    Application.LoadLevel(0);
+                    break;
+                }
+
                 //controls on both controllers for navigating the menu
                 if (GameManager.m_gameManager.m_useController)
                 {
