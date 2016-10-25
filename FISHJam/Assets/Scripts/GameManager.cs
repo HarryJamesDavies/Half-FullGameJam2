@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour {
         //constantly check if endgame has happened
         if(Application.loadedLevel == 1)
         {
+            Cursor.visible = false;
+
             if (!m_endgame)
             {
                 if (WorkerManager.worker_instance.m_globalFrustration > WorkerManager.worker_instance.m_currentWorkerPop * m_frustrationMultiplier &&
@@ -85,6 +87,10 @@ public class GameManager : MonoBehaviour {
                     Application.LoadLevel(4);
                 }
             }
+        }
+        else
+        {
+            Cursor.visible = true;
         }
     }
 

@@ -39,7 +39,7 @@ public class WorkerManager : MonoBehaviour {
         }
 
         m_WorkerList = new List<GameObject>();
-        m_workerHolder = new GameObject("Worker Holder").transform;
+        m_workerHolder = new GameObject("WorkerHolder").transform;
     }
 
     void Update()
