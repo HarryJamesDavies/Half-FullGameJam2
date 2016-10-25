@@ -133,6 +133,6 @@ public class InteractableManager : MonoBehaviour
         //    }
         //}
 
-        return objectReference.gameObject.GetComponent<ObjectReference>();
+        return m_objectReferences[0].gameObject.GetComponent<ObjectReference>();
     }
 }

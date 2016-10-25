@@ -20,6 +20,8 @@ public class WorkerManager : MonoBehaviour {
     public Slider m_globalFrustrationSlider;
     public Slider m_globalSuspicionSlider;
 
+    private Transform m_workerHolder;
+
     void Start()
     {
         StartCoroutine(SpawnAllWorkers());
@@ -37,6 +39,7 @@ public class WorkerManager : MonoBehaviour {
         }
 
         m_WorkerList = new List<GameObject>();
+        m_workerHolder = new GameObject("Worker Holder").transform;
     }
 
     void Update()
@@ -70,6 +73,7 @@ public class WorkerManager : MonoBehaviour {
         {
             //spawn the enemy and add it to the list
            GameObject temp = (GameObject) Instantiate(m_Worker, spawnPoint.position, spawnPoint.rotation);
+            temp.transform.SetParent(m_workerHolder);
            m_WorkerList.Add(temp);
             //And wait 1 second to spawn another
             yield return new WaitForSeconds(1f);
