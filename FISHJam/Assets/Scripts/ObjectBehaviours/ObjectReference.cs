@@ -9,6 +9,12 @@ public class ObjectReference : MonoBehaviour
     public PlayerAbilities.InteractableStates m_state { get; set; }
     public Vector3 m_position { get; set; }
     public bool m_inUse { get; set; }
+    public bool m_tagged { get; set; }
+
+    void LateUpdate()
+    {
+        m_tagged = false;
+    }
 
     public ObjectReference(GameObject _object, InteractableManager.ObjectType _type, 
         PlayerAbilities.InteractableStates _state, Vector3 _position, bool _inUse)
@@ -18,6 +24,7 @@ public class ObjectReference : MonoBehaviour
         m_state = _state;
         m_position = _position;
         m_inUse = _inUse;
+        m_tagged = false;
     }
 
     public void UpdateObjectReference()
