@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow : MonoBehaviour
+{
 
     float m_zoomFactor = 5.0f;
     float m_movementFactor = 3.0f;
     float m_zoomInFactor = 20.0f;
     float m_zoomOutFactor = 60.0f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         //checks if controller is plugged in
         if (GameManager.m_gameManager.m_useController)
@@ -129,5 +132,25 @@ public class CameraFollow : MonoBehaviour {
                 }
             }
         }
-	}
+
+        if (transform.position.z > 70.0f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 70.0f);
+        }
+
+        if (transform.position.z < -70.0f)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -70.0f);
+        }
+
+        if (transform.position.x > 70.0f)
+        {
+            transform.position = new Vector3(70.0f, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x < -70.0f)
+        {
+            transform.position = new Vector3(-70.0f, transform.position.y, transform.position.z);
+        }
+    }
 }
