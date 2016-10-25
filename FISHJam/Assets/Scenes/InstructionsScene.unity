@@ -681,8 +681,8 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.5, y: 106}
-  m_SizeDelta: {x: 585, y: 49}
+  m_AnchoredPosition: {x: -12.5, y: 21}
+  m_SizeDelta: {x: 585, y: 218}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299839618
 MonoBehaviour:
@@ -718,7 +718,19 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Goal: Taunt the workforce of the FISH Corporation, who created you and
     treat you with little to no respect. Force employees to become so annoyed with
-    their working conditions, they leave.'
+    their working conditions, they leave.
+
+
+    Make sure not to annoy them so much that they become suspicious that something
+    or someone is messing with them. If all the workers become too suspicious, then
+    you will be discovered an decompiled.
+
+
+    Use your abilities to change objects behaviour, to affect workers emotions.
+
+
+    You will suceed if the overall frustration level reaches above 70%, so long as
+    suspicion remains below the frustration level.'
 --- !u!222 &299839619
 CanvasRenderer:
   m_ObjectHideFlags: 0
