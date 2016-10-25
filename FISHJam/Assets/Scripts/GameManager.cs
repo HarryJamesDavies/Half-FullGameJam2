@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour {
     public float m_finalFrustration;
     public float m_finalSuspicion;
 
+    public float m_frustrationMultiplier;
+    public float m_suspicionMultiplier;
+
     void Awake()
     {
         //setup of variables
@@ -29,6 +32,10 @@ public class GameManager : MonoBehaviour {
 
         m_finalFrustration = 0.0f;
         m_finalSuspicion = 0.0f;
+
+        //scaled down for demo version, actual values should be: 8.0f and 7.0f
+        m_frustrationMultiplier = 4.0f;
+        m_suspicionMultiplier = 3.0f;
         
         //make sure singleton is properly initialised
         if (m_gameManager == null)
@@ -51,8 +58,8 @@ public class GameManager : MonoBehaviour {
         {
             if (!m_endgame)
             {
-                if (WorkerManager.worker_instance.m_globalFrustration > 80.0f &&
-                    WorkerManager.worker_instance.m_globalSuspicion < 70.0f)
+                if (WorkerManager.worker_instance.m_globalFrustration > WorkerManager.worker_instance.m_currentWorkerPop * m_frustrationMultiplier &&
+                    WorkerManager.worker_instance.m_globalSuspicion < WorkerManager.worker_instance.m_currentWorkerPop * m_suspicionMultiplier)
                 {
                     m_loseBool = false;
                     m_winBool = true;
@@ -65,7 +72,7 @@ public class GameManager : MonoBehaviour {
                     Application.LoadLevel(4);
                 }
 
-                if (WorkerManager.worker_instance.m_globalSuspicion > 70.0f)
+                if (WorkerManager.worker_instance.m_globalSuspicion > WorkerManager.worker_instance.m_currentWorkerPop * m_suspicionMultiplier)
                 {
                     m_loseBool = true;
                     m_winBool = false;

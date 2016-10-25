@@ -51,6 +51,9 @@ public class WorkerManager : MonoBehaviour {
         }
 
         //constantly update global sliders
+        m_globalFrustrationSlider.maxValue = 100.0f * WorkerManager.worker_instance.m_currentWorkerPop;
+        m_globalSuspicionSlider.maxValue = 100.0f * WorkerManager.worker_instance.m_currentWorkerPop;
+
         m_globalFrustrationSlider.value = m_globalFrustration;
         m_globalSuspicionSlider.value = m_globalSuspicion;
     }
