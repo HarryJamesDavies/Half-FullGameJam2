@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour {
         m_finalFrustration = 0.0f;
         m_finalSuspicion = 0.0f;
 
-        //scaled down for demo version, actual values should be: 8.0f and 7.0f
-        m_frustrationMultiplier = 4.0f;
-        m_suspicionMultiplier = 3.0f;
+        //scaled down for demo version, actual values should be: 80.0f and 70.0f
+        m_frustrationMultiplier = 40.0f;
+        m_suspicionMultiplier = 30.0f;
         
         //make sure singleton is properly initialised
         if (m_gameManager == null)
